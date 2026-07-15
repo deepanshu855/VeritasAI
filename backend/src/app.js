@@ -8,6 +8,7 @@ const app = express();
 
 // Import routes & middleware
 import authRouter from "./routes/auth.routes.js";
+import chatRouter from "./routes/chat.route.js";
 import handleError from "./middlewares/error.middleware.js";
 
 // Middleware
@@ -23,6 +24,7 @@ app.use(morgan("dev"));
 
 // Routes
 app.use("/api/auth", authRouter);
+app.use("/api/chats", chatRouter);
 
 app.use(handleError);
 

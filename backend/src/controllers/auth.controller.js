@@ -24,6 +24,7 @@ export const registerController = async (req, res, next) => {
 
   const emailToken = jwt.sign(
     {
+      id:user._id,
       email,
     },
     process.env.JWT_SECRET,
