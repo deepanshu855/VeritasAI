@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useChat } from "../hooks/useChat";
 import { setCurrentChatId } from "../chat.slice";
 import "../styles/dashboard.css";
+import ReactMarkdown from "react-markdown";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -126,7 +127,9 @@ const Dashboard = () => {
                   ) : (
                     <div className="ai-message-content">
                       <div className="ai-header">✓ Veritas-AI Response</div>
-                      <p>{msg.content}</p>
+                      <div className="markdown-content">
+                        <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      </div>
                     </div>
                   )}
                 </div>
