@@ -16,16 +16,16 @@ export const sendMessage = async (req, res, next) => {
       title,
     });
   } else {
-    title = await chatModel.findById(chatId);
+    userChat=await chatModel.findById(chatId);
   }
 
   const userMessage = await messageModel.create({
-    chat: chatId || userChat._id,
+    chat: userChat._id,
     content: message,
     role: "user",
   });
 
-  const messages = await messageModel.find({ chat: chatId || userChat._id });
+  const messages = await messageModel.find({ chat: userChat._id });
   const aiResponse = await generateResponse(messages);
 
   if (!aiResponse) {
@@ -35,15 +35,15 @@ export const sendMessage = async (req, res, next) => {
   }
 
   const aiMessage = await messageModel.create({
-    chat: chatId || userChat._id,
+    chat: userChat._id,
     content: aiResponse,
     role: "ai",
   });
 
   res.status(200).json({
     success: true,
-    chat: chatId || userChat._id,
-    title: title.title,
+    chat: userChat,
+    title: userChat.title,
     aiResponse,
   });
 };
