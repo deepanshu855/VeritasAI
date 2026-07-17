@@ -4,6 +4,7 @@ import { useChat } from "../hooks/useChat";
 import { setCurrentChatId } from "../chat.slice";
 import "../styles/dashboard.css";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,10 @@ const Dashboard = () => {
           <h1 className="sidebar-title">VERITAS-AI</h1>
         </div>
 
-        <button className="new-chat-btn">
+        <button
+          onClick={() => dispatch(setCurrentChatId(null))}
+          className="new-chat-btn"
+        >
           <span className="plus-icon">+</span> New Chat
         </button>
 
@@ -93,7 +97,7 @@ const Dashboard = () => {
         </div>
 
         <div className="user-profile">
-          <div className="user-avatar">JD</div>
+          <div className="user-avatar"> {user?.username ? user.username.charAt(0).toUpperCase() : "U"}</div>
           <div className="user-info">
             <p className="user-name">{user?.username || "John Doe"}</p>
             <p className="user-status">Verified User</p>
@@ -128,7 +132,9 @@ const Dashboard = () => {
                     <div className="ai-message-content">
                       <div className="ai-header">✓ Veritas-AI Response</div>
                       <div className="markdown-content">
-                        <ReactMarkdown>{msg.content}</ReactMarkdown>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                          {msg.content}
+                        </ReactMarkdown>
                       </div>
                     </div>
                   )}

@@ -238,7 +238,7 @@ export const forgotPasswordController = async (req, res, next) => {
       <h2>Reset Your Password 🔒</h2>
       <p>We received a request to reset your Veritas AI account password.</p>
       <p>Click the link below to set a new password.</p>
-      <a href="http://localhost:3000/api/auth/reset-password?token=${emailToken}">Reset Password</a>
+      <a href="http://localhost:5173/reset-password?token=${emailToken}">Reset Password</a>
       <br>
       <p>If you didn't request this, you can safely ignore this email.</p>
       <p><strong>— The Veritas AI Team</strong></p>
@@ -247,7 +247,7 @@ export const forgotPasswordController = async (req, res, next) => {
 
   res.status(200).json({
     success: true,
-    message: "Reset password mail sent successfully",
+    message: "Reset password email sent successfully",
     email,
   });
 };

@@ -5,7 +5,9 @@ const tvly = tavily({ apiKey: process.env.TAVILY_API_KEY });
 // const response = await tvly.search("Who is Leo Messi?");
 
 export const tavilySearch = async ({query}) => {
-  const response = await tvly.search(query);
+  const response = await tvly.search(query, {
+    maxResults: 5,
+  });
 
   return JSON.stringify(response);
 };

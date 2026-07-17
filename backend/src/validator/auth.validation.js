@@ -36,3 +36,11 @@ export const loginValidator = [
 
   validation,
 ];
+
+export const resetPasswordValidator = [
+  body("newPassword")
+    .isLength({ min: 6 })
+    .withMessage("Password must be at least 6 characters"),
+
+  validation,
+];

@@ -26,3 +26,15 @@ export const getMe = async () => {
   const response = await instance.get("/get-me");
   return response.data;
 };
+
+export const forgotPassword = async (email) => {
+  const response = await instance.post("/forgot-password", { email });
+  return response.data;
+};
+
+export const resetPassword = async (newPassword, token) => {
+  const response = await instance.post(`/reset-password?token=${token}`, {
+    newPassword,
+  });
+  return response.data
+};
