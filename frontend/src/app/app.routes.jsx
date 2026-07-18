@@ -6,6 +6,7 @@ import Protected from "../features/auth/component/Protected";
 import Landing from "../features/shared/pages/Landing";
 import ResetPassword from "../features/auth/component/ResetPassword";
 import PageNotFound from "../features/shared/components/PageNotFound";
+import VerifyEmail from "../features/auth/component/VerifyEmail";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
   {
     path: "/reset-password",
     element: <ResetPassword />,
+  },
+  {
+    path: "verify-email",
+    element: <VerifyEmail />
   },
   {
     path: "*",

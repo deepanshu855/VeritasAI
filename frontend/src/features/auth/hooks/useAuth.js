@@ -6,6 +6,8 @@ import {
   resetPassword,
   logout,
   forgotPassword,
+  verifyEmail,
+  resendVerifyEmail,
 } from "../services/auth.api";
 import { setUser, setLoading, setError } from "../auth.slice";
 import { toast } from "react-toastify";
@@ -50,6 +52,8 @@ export const useAuth = () => {
       toast.error(errorMessage, {
         autoClose: 1000,
       });
+
+      throw error;
     } finally {
       dispatch(setLoading(false));
     }
@@ -115,6 +119,40 @@ export const useAuth = () => {
     }
   };
 
+  const handleVerifyEmail = async (token) => {
+    try {
+      dispatch(setLoading(true));
+      const data = await verifyEmail(token);
+      toast.success("Email verified", {
+        autoClose:1000
+      })
+      return data;
+    } catch (error) {
+      return {
+        success: false,
+        message: error.response?.data?.message || "Verification failed",
+      };
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  const handleResendVerifyEmail = async (email) => {
+    try {
+      dispatch(setLoading(true));
+      const data = await resendVerifyEmail(email);
+      return data;
+    } catch (error) {
+      return {
+        success: false,
+        message:
+          error.response?.data?.message || "Unable to send verification email",
+      };
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
   return {
     handleLogin,
     handleRegister,
@@ -122,5 +160,7 @@ export const useAuth = () => {
     handleResetPassword,
     handleLogout,
     handleForgotPassword,
+    handleVerifyEmail,
+    handleResendVerifyEmail,
   };
 };

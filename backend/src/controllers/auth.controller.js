@@ -39,7 +39,7 @@ export const registerController = async (req, res, next) => {
     <h2>Welcome to Veritas AI! 🎉</h2>
     <p>You're all set to start exploring AI-powered conversations, web research, and more.</p>
     <p>Please, verify yourself...</p>
-    <a href=https://veritasai-v214.onrender.com//api/auth/verify-email?token=${emailToken}>Verify Email</a>
+    <a href=https://veritasai-v214.onrender.com/verify-email?token=${emailToken}>Verify Email</a>
     <br>
     <p><strong>— The Veritas AI Team</strong></p>
   `,
@@ -79,41 +79,19 @@ export const verifyEmailController = async (req, res, next) => {
   }
 
   if (user.verified) {
-    const html = `
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <title>Already Verified</title>
-    </head>
-    <body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
-      <h1>✅ Email Already Verified</h1>
-      <p>Your email address has already been verified.</p>
-      <p>You can continue using <strong>Veritas AI</strong> and log in to your account.</p>
-    </body>
-  </html>
-`;
-
-    return res.send(html);
+    return res.status(200).json({
+      success: true,
+      message: "Your mail is already verified",
+    });
   }
 
   user.verified = true;
   user.save();
 
-  const html = `
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>Email Verified</title>
-      </head>
-      <body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
-        <h1>✅ Email Verified Successfully!</h1>
-        <p>Your email has been verified.</p>
-        <p>You can now return to <strong>Veritas AI</strong> and log in.</p>
-      </body>
-    </html>
-  `;
-
-  res.send(html);
+  res.status(200).json({
+    success: true,
+    message: "Email verified successfully",
+  });
 };
 
 export const resendVerifyEmailController = async (req, res, next) => {
@@ -144,7 +122,7 @@ export const resendVerifyEmailController = async (req, res, next) => {
     <h2>Welcome to Veritas AI! 🎉</h2>
     <p>You're all set to start exploring AI-powered conversations, web research, and more.</p>
     <p>Please, verify yourself...</p>
-    <a href=http://localhost:3000/api/auth/verify-email?token=${emailToken}>Verify Email</a>
+    <a href=https://veritasai-v214.onrender.com/verify-email?token=${emailToken}>Verify Email</a>
     <br>
     <p><strong>— The Veritas AI Team</strong></p>
   `,
@@ -168,17 +146,20 @@ export const loginController = async (req, res, next) => {
     return next(error);
   }
 
+  if (!user.verified) {
+    return res.status(403).json({
+      success: false,
+      message: "Please verify your email before logging in.",
+      code: "EMAIL_NOT_VERIFIED",
+      email: user.email,
+    });
+  }
+
   const isValidPassword = await user.comparePassword(password);
 
   if (!isValidPassword) {
     const error = new Error("Invalid credentials");
     error.status = 403;
-    return next(error);
-  }
-
-  if (!user.verified) {
-    const error = new Error("Please verify your email before logging in");
-    error.status = 400;
     return next(error);
   }
 

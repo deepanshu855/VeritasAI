@@ -4,16 +4,20 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth.js";
 import "../styles/auth.css";
 import ShapeGrid from "../../shared/background/ShapeGrid.jsx";
+// Assuming you have toast imported somewhere globally or at the top
+import { toast } from "react-hot-toast"; // Adjust based on your toast library
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showResend, setShowResend] = useState(false);
+  const [userEmail, setUserEmail] = useState(""); // Added missing state
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
 
-  const { handleLogin, handleForgotPassword } = useAuth();
+  const { handleLogin, handleForgotPassword, handleResendVerifyEmail } = useAuth();
 
   if (user) {
     return <Navigate to="/dashboard" />;
@@ -33,16 +37,36 @@ const Login = () => {
 
   const submitForm = async (event) => {
     event.preventDefault();
+    try {
+      setShowResend(false); // Reset state on new attempt
+      const payload = { email, password };
 
-    const payload = { email, password };
+      await handleLogin(payload);
 
-    await handleLogin(payload);
+      navigate("/dashboard");
+    } catch (error) {
+      const data = error.response?.data;
 
-    navigate("/dashboard");
+      if (data?.code === "EMAIL_NOT_VERIFIED") {
+        setShowResend(true);
+        setUserEmail(data.email);
+      }
+    }
   };
 
   const forgotPasswordHandler = () => {
     handleForgotPassword(email);
+  };
+
+  const handleResend = async () => {
+    const result = await handleResendVerifyEmail(userEmail);
+
+    if (result.success) {
+      toast.success(result.message);
+      setShowResend(false); // Optionally hide after success
+    } else {
+      toast.error(result.message);
+    }
   };
 
   return (
@@ -50,18 +74,17 @@ const Login = () => {
       <ShapeGrid
         speed={0.6}
         squareSize={40}
-        direction="diagonal" // up, down, left, right, diagonal
+        direction="up" // Removed duplicate direction prop
         borderColor="#2F293A"
         hoverFillColor="#222"
-        shape="square" // square, hexagon, circle, triangle
-        hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
-        direction="up"
+        hoverTrailAmount={0}
         hoverColor="#222222"
         size={40}
-        shape="square"
+        shape="square" // Removed duplicate shape prop
       />
 
-      <section className="auth-content auth-page">
+      {/* Position absolute overlay to ensure it sits on top of ShapeGrid */}
+      <section className="auth-content auth-page" style={{ position: "relative", zIndex: 10 }}>
         <div className="auth-wrapper">
           <div className="auth-brand">VERITAS-AI</div>
 
@@ -94,13 +117,14 @@ const Login = () => {
                   <label htmlFor="password" className="auth-label">
                     Password
                   </label>
-                  <div
+                  {/* Changed from div to button for semantic correctness & onClick handling */}
+                  <button
+                    type="button"
                     onClick={forgotPasswordHandler}
-                    to="/forgot-password"
-                    className="forgot-password-link"
+                    className="forgot-password-link btn-reset"
                   >
                     Forgot password?
-                  </div>
+                  </button>
                 </div>
                 <input
                   id="password"
@@ -112,6 +136,16 @@ const Login = () => {
                   className="auth-input"
                 />
               </div>
+
+              {/* Dedicated UI for Resend Verification */}
+              {showResend && (
+                <div className="resend-alert">
+                  <p className="resend-text">Your email address has not been verified yet.</p>
+                  <button type="button" onClick={handleResend} className="resend-button">
+                    Resend Verification Email
+                  </button>
+                </div>
+              )}
 
               <button type="submit" className="auth-button">
                 Login
