@@ -1,16 +1,6 @@
 import "dotenv/config";
 import nodemailer from "nodemailer";
 
-console.log("========== Email Service Loaded ==========");
-
-console.log("GOOGLE_USER:", process.env.GOOGLE_USER);
-console.log("CLIENT_ID exists:", !!process.env.GOOGLE_CLIENT_ID);
-console.log("CLIENT_SECRET exists:", !!process.env.GOOGLE_CLIENT_SECRET);
-console.log("REFRESH_TOKEN exists:", !!process.env.GOOGLE_REFRESH_TOKEN);
-
-console.log("Creating transporter...");
-
-// Creating transporter for communication b/w webserver and smtp server.
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -22,30 +12,19 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-console.log("Transporter created");
-
-console.log("Calling transporter.verify()...");
-
-// Verify the connection configuration
-transporter.verify((error, success) => {
-  console.log("Verify callback executed");
-
-  if (error) {
-    console.error("Error connecting to email server:");
-    console.error(error);
-  } else {
+// Switch to the promise-based version of verify so you can await it
+export const verifyConnection = async () => {
+  try {
+    await transporter.verify();
     console.log("Email server is ready to send messages");
-    console.log(success);
+    return true;
+  } catch (error) {
+    console.error("Error connecting to email server in production:", error);
+    return false;
   }
-});
+};
 
-// This fn is used to send the email (Notice email is sent in the form of html)
 export const sendEmail = async ({ to, subject, html, text }) => {
-  console.log("==================================");
-  console.log("sendEmail() called");
-  console.log("To:", to);
-  console.log("Subject:", subject);
-
   const mailOptions = {
     from: process.env.GOOGLE_USER,
     to,
@@ -54,21 +33,16 @@ export const sendEmail = async ({ to, subject, html, text }) => {
     text,
   };
 
-  console.log("Mail options created");
-  console.log("Calling transporter.sendMail()...");
-
-  const start = Date.now();
-
-  const details = await transporter.sendMail(mailOptions);
-
-  console.log("transporter.sendMail() completed");
-  console.log("Time Taken:", Date.now() - start, "ms");
-
-  console.log("Email sent successfully");
-  console.log("Message ID:", details.messageId);
-  console.log("Accepted:", details.accepted);
-  console.log("Rejected:", details.rejected);
-  console.log(details);
-
-  return details;
+  // Force the serverless environment to wait for the email to fully send
+  return new Promise((resolve, reject) => {
+    transporter.sendMail(mailOptions, (err, info) => {
+      if (err) {
+        console.error("sendMail error details:", err);
+        reject(err);
+      } else {
+        console.log("Email sent successfully:", info.messageId);
+        resolve(info);
+      }
+    });
+  });
 };

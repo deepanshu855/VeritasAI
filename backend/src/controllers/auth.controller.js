@@ -1,6 +1,6 @@
 import "dotenv/config";
 import userModel from "../models/user.model.js";
-import { sendEmail } from "../services/mail.services.js";
+import { sendEmail, verifyConnection } from "../services/mail.services.js";
 import jwt from "jsonwebtoken";
 import { redis } from "../config/cache.js";
 
@@ -39,7 +39,7 @@ export const registerController = async (req, res, next) => {
     <h2>Welcome to Veritas AI! 🎉</h2>
     <p>You're all set to start exploring AI-powered conversations, web research, and more.</p>
     <p>Please, verify yourself...</p>
-    <a href=https://veritasai-v214.onrender.com/api/auth/verify-email?token=${emailToken}>Verify Email</a>
+    <a href=https://veritasai-v214.onrender.com//api/auth/verify-email?token=${emailToken}>Verify Email</a>
     <br>
     <p><strong>— The Veritas AI Team</strong></p>
   `,
@@ -218,60 +218,52 @@ export const getMeController = async (req, res, next) => {
 
 // This sends the password reset email.
 export const forgotPasswordController = async (req, res, next) => {
-  console.log("====================================");
-  console.log("forgotPasswordController called");
-
   const { email } = req.body;
 
-  console.log("Email received:", email);
+  try {
+    const user = await userModel.findOne({ email });
 
-  const user = await userModel.findOne({ email });
+    if (!user) {
+      const error = new Error("User doesn't exist");
+      error.status = 403;
+      return next(error);
+    }
 
-  console.log("User lookup completed");
+    const emailToken = jwt.sign({ email }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
 
-  if (!user) {
-    console.log("User not found");
+    // Await the email sending process
+    await sendEmail({
+      to: email,
+      subject: "Reset Password Veritas AI",
+      html: `
+        <h2>Reset Your Password 🔒</h2>
+        <p>We received a request to reset your Veritas AI account password.</p>
+        <p>Click the link below to set a new password.</p>
+        <a href="https://veritasai-v214.onrender.com/reset-password?token=${emailToken}">Reset Password</a>
+        <br>
+        <p>If you didn't request this, you can safely ignore this email.</p>
+        <p><strong>— The Veritas AI Team</strong></p>
+      `,
+    });
 
-    const error = new Error("User doesn't exist");
-    error.status = 403;
-    return next(error);
+    // Only send the success response if sendEmail succeeds
+    res.status(200).json({
+      success: true,
+      message: "Reset password email sent successfully",
+      email,
+    });
+  } catch (error) {
+    // THIS is the crucial part. It will print the exact Nodemailer error to your Render logs.
+    console.error("🚨 Error sending email in production:", error);
+
+    const err = new Error(
+      "Failed to send reset email. Please try again later.",
+    );
+    err.status = 500;
+    return next(err);
   }
-
-  console.log("User found:", user.email);
-
-  const emailToken = jwt.sign({ email }, process.env.JWT_SECRET, {
-    expiresIn: "1h",
-  });
-
-  console.log("JWT token generated");
-
-  console.log("About to call sendEmail()");
-
-  await sendEmail({
-    to: email,
-    subject: "Reset Password Veritas AI",
-    html: `
-      <h2>Reset Your Password 🔒</h2>
-      <p>We received a request to reset your Veritas AI account password.</p>
-      <p>Click the link below to set a new password.</p>
-      <a href="https://veritasai-v214.onrender.com/reset-password?token=${emailToken}">Reset Password</a>
-      <br>
-      <p>If you didn't request this, you can safely ignore this email.</p>
-      <p><strong>— The Veritas AI Team</strong></p>
-    `,
-  });
-
-  console.log("sendEmail() completed successfully");
-
-  console.log("Sending success response");
-
-  res.status(200).json({
-    success: true,
-    message: "Reset password email sent successfully",
-    email,
-  });
-
-  console.log("Response sent");
 };
 
 export const resetPasswordController = async (req, res, next) => {
