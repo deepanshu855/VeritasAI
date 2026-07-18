@@ -5,6 +5,7 @@ import {
   getMe,
   resetPassword,
   logout,
+  forgotPassword,
 } from "../services/auth.api";
 import { setUser, setLoading, setError } from "../auth.slice";
 
@@ -52,10 +53,22 @@ export const useAuth = () => {
     }
   };
 
+  const handleForgotPassword = async (email) => {
+    try {
+      dispatch(setLoading(true));
+      console.log("Hook: ", email)
+      const data = await forgotPassword(email);
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || "Cannot send mail";
+      dispatch(setError(errorMessage));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
   const handleResetPassword = async (password, token) => {
     try {
       dispatch(setLoading(true));
-      console.log(token);
       const data = await resetPassword(password, token);
     } catch (error) {
       setError(error.response);
@@ -84,5 +97,6 @@ export const useAuth = () => {
     handleGetMe,
     handleResetPassword,
     handleLogout,
+    handleForgotPassword,
   };
 };

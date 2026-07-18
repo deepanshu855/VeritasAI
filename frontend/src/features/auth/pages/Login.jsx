@@ -13,7 +13,7 @@ const Login = () => {
   const loading = useSelector((state) => state.auth.loading);
   const error = useSelector((state) => state.auth.error);
 
-  const { handleLogin } = useAuth();
+  const { handleLogin, handleForgotPassword } = useAuth();
 
   if (user) {
     return <Navigate to="/dashboard" />;
@@ -39,6 +39,10 @@ const Login = () => {
     await handleLogin(payload);
 
     navigate("/dashboard");
+  };
+
+  const forgotPasswordHandler = () => {
+    handleForgotPassword(email);
   };
 
   return (
@@ -75,7 +79,11 @@ const Login = () => {
                 <label htmlFor="password" className="auth-label">
                   Password
                 </label>
-                <div to="/forgot-password" className="forgot-password-link">
+                <div
+                  onClick={forgotPasswordHandler}
+                  to="/forgot-password"
+                  className="forgot-password-link"
+                >
                   Forgot password?
                 </div>
               </div>

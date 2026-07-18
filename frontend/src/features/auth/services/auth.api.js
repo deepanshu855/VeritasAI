@@ -28,6 +28,7 @@ export const getMe = async () => {
 };
 
 export const forgotPassword = async (email) => {
+  console.log("API: ",email)
   const response = await instance.post("/forgot-password", { email });
   return response.data;
 };

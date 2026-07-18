@@ -10,9 +10,10 @@ const ResetPassword = () => {
 
   const { handleResetPassword } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleResetPassword(password, token);
+    await handleResetPassword(password, token);
+    setPassword("");
   };
 
   return (

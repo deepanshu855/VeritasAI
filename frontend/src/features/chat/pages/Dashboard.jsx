@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../../auth/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { setUser } from "../../auth/auth.slice";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -77,6 +78,7 @@ const Dashboard = () => {
 
   const submitLogout = () => {
     handleLogout();
+    dispatch(setUser(null));
     navigate("/");
   };
 
