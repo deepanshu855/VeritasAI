@@ -219,11 +219,13 @@ export const getMeController = async (req, res, next) => {
 // This sends the password reset email.
 export const forgotPasswordController = async (req, res, next) => {
   const { email } = req.body;
-
-  console.log(`🚨 ROUTE HIT: Forgot password triggered for ${email}`);
+  
+  console.log(`[1] ROUTE HIT: Forgot password for ${email}`);
 
   try {
+    console.log(`[2] Querying database...`);
     const user = await userModel.findOne({ email });
+    console.log(`[3] Database query complete. User found: ${!!user}`);
 
     if (!user) {
       const error = new Error("User doesn't exist");
@@ -235,7 +237,8 @@ export const forgotPasswordController = async (req, res, next) => {
       expiresIn: "1h",
     });
 
-    // Await the email sending process
+    console.log(`[4] Triggering sendEmail function...`);
+    
     await sendEmail({
       to: email,
       subject: "Reset Password Veritas AI",
@@ -244,25 +247,20 @@ export const forgotPasswordController = async (req, res, next) => {
         <p>We received a request to reset your Veritas AI account password.</p>
         <p>Click the link below to set a new password.</p>
         <a href="https://veritasai-v214.onrender.com/reset-password?token=${emailToken}">Reset Password</a>
-        <br>
-        <p>If you didn't request this, you can safely ignore this email.</p>
-        <p><strong>— The Veritas AI Team</strong></p>
       `,
     });
+    
+    console.log(`[5] Email sent successfully!`);
 
-    // Only send the success response if sendEmail succeeds
     res.status(200).json({
       success: true,
       message: "Reset password email sent successfully",
       email,
     });
-  } catch (error) {
-    // THIS is the crucial part. It will print the exact Nodemailer error to your Render logs.
-    console.error("🚨 Error sending email in production:", error);
 
-    const err = new Error(
-      "Failed to send reset email. Please try again later.",
-    );
+  } catch (error) {
+    console.error("🚨 Controller Catch Block Hit:", error);
+    const err = new Error("Failed to send reset email. Please try again later.");
     err.status = 500;
     return next(err);
   }

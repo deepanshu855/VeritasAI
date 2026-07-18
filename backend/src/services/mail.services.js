@@ -2,7 +2,9 @@ import "dotenv/config";
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // true for 465, false for other ports
   auth: {
     type: "OAuth2",
     user: process.env.GOOGLE_USER,
@@ -10,6 +12,8 @@ const transporter = nodemailer.createTransport({
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
   },
+  // This is the magic bullet: Force it to throw an error if it hangs for 10 seconds
+  connectionTimeout: 10000, 
 });
 
 // Switch to the promise-based version of verify so you can await it
