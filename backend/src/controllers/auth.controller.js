@@ -1,6 +1,6 @@
 import "dotenv/config";
 import userModel from "../models/user.model.js";
-import { sendEmail, verifyConnection } from "../services/mail.services.js";
+import { sendEmail } from "../services/mail.services.js";
 import jwt from "jsonwebtoken";
 import { redis } from "../config/cache.js";
 
@@ -219,13 +219,9 @@ export const getMeController = async (req, res, next) => {
 // This sends the password reset email.
 export const forgotPasswordController = async (req, res, next) => {
   const { email } = req.body;
-  
-  console.log(`[1] ROUTE HIT: Forgot password for ${email}`);
 
   try {
-    console.log(`[2] Querying database...`);
     const user = await userModel.findOne({ email });
-    console.log(`[3] Database query complete. User found: ${!!user}`);
 
     if (!user) {
       const error = new Error("User doesn't exist");
@@ -237,8 +233,6 @@ export const forgotPasswordController = async (req, res, next) => {
       expiresIn: "1h",
     });
 
-    console.log(`[4] Triggering sendEmail function...`);
-    
     await sendEmail({
       to: email,
       subject: "Reset Password Veritas AI",
@@ -249,18 +243,17 @@ export const forgotPasswordController = async (req, res, next) => {
         <a href="https://veritasai-v214.onrender.com/reset-password?token=${emailToken}">Reset Password</a>
       `,
     });
-    
-    console.log(`[5] Email sent successfully!`);
 
     res.status(200).json({
       success: true,
       message: "Reset password email sent successfully",
       email,
     });
-
   } catch (error) {
-    console.error("🚨 Controller Catch Block Hit:", error);
-    const err = new Error("Failed to send reset email. Please try again later.");
+    console.error("Error sending reset password email:", error);
+    const err = new Error(
+      "Failed to send reset email. Please try again later.",
+    );
     err.status = 500;
     return next(err);
   }
