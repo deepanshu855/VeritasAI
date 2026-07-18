@@ -84,7 +84,7 @@ const Login = () => {
       />
 
       {/* Position absolute overlay to ensure it sits on top of ShapeGrid */}
-      <section className="auth-content auth-page" style={{ position: "relative", zIndex: 10 }}>
+      <section className="auth-content auth-page">
         <div className="auth-wrapper">
           <div className="auth-brand">VERITAS-AI</div>
 
