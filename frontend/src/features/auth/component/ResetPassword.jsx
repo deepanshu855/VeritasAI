@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import "../styles/auth.css";
-import { useSearchParams } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 const ResetPassword = () => {
@@ -17,16 +16,20 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="auth-page">
+    <section className="auth-page">
       <div className="auth-wrapper">
+        <div className="auth-brand">VERITAS-AI</div>
+
         <div className="auth-card">
-          <h2 className="auth-heading">Reset Password</h2>
-          <p className="auth-subtitle">
-            Enter your new password to update your account.
-          </p>
+          <div className="auth-header">
+            <h1 className="auth-heading">Reset Password</h1>
+            <p className="auth-subtitle">
+              Enter your new password to update your account.
+            </p>
+          </div>
 
           <form className="auth-form" onSubmit={handleSubmit}>
-            <div>
+            <div className="input-group">
               <label className="auth-label" htmlFor="password">
                 New Password
               </label>
@@ -39,20 +42,21 @@ const ResetPassword = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button className="auth-button" type="submit">
-                Update Password
-              </button>
             </div>
+
+            <button className="auth-button" type="submit">
+              Update Password
+            </button>
           </form>
 
-          <div className="auth-footer">
+          <p className="auth-footer">
             <Link to="/login" className="auth-link">
               Back to Login
             </Link>
-          </div>
+          </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

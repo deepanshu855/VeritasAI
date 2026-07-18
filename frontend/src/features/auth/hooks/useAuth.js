@@ -1,5 +1,10 @@
 import { useDispatch } from "react-redux";
-import { loginUser, registerUser, getMe, resetPassword } from "../services/auth.api";
+import {
+  loginUser,
+  registerUser,
+  getMe,
+  resetPassword,
+} from "../services/auth.api";
 import { setUser, setLoading, setError } from "../auth.slice";
 
 export const useAuth = () => {
@@ -24,7 +29,12 @@ export const useAuth = () => {
       const data = await loginUser({ email, password });
       dispatch(setUser(data.user));
     } catch (error) {
-      dispatch(setError(error.response?.data?.message || "Login failed"));
+      const errorMessage =
+        error.response?.data?.errors?.[0]?.msg ||
+        error.response?.data?.message ||
+        "Login failed";
+
+      dispatch(setError(errorMessage));
     } finally {
       dispatch(setLoading(false));
     }
@@ -36,30 +46,27 @@ export const useAuth = () => {
       const data = await getMe();
       dispatch(setUser(data.user));
     } catch (error) {
-      dispatch(
-        setError(error.response?.data?.message || "Failed to get user."),
-      );
     } finally {
       dispatch(setLoading(false));
     }
   };
 
-  const handleResetPassword= async(password, token)=>{
+  const handleResetPassword = async (password, token) => {
     try {
       dispatch(setLoading(true));
-      console.log(token)
-      const data=await resetPassword(password, token);
+      console.log(token);
+      const data = await resetPassword(password, token);
     } catch (error) {
-      setError(error.response)
+      setError(error.response);
     } finally {
-      dispatch(setLoading(false))
+      dispatch(setLoading(false));
     }
-  }
+  };
 
   return {
     handleLogin,
     handleRegister,
     handleGetMe,
-    handleResetPassword
+    handleResetPassword,
   };
 };

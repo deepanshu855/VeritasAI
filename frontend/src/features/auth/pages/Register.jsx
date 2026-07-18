@@ -14,7 +14,15 @@ const Register = () => {
   const { handleRegister } = useAuth();
 
   if (loading) {
-    return <h1>Authenticating...</h1>;
+    return (
+      <section className="auth-page centered">
+        <div className="loading-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </section>
+    );
   }
 
   const submitForm = async (event) => {
@@ -32,14 +40,18 @@ const Register = () => {
   return (
     <section className="auth-page">
       <div className="auth-wrapper">
+        <div className="auth-brand">VERITAS-AI</div>
+
         <div className="auth-card">
-          <h1 className="auth-heading">Create Account</h1>
-          <p className="auth-subtitle">
-            Register with your username, email, and password.
-          </p>
+          <div className="auth-header">
+            <h1 className="auth-heading">Create Account</h1>
+            <p className="auth-subtitle">
+              Register with your username, email, and password.
+            </p>
+          </div>
 
           <form onSubmit={submitForm} className="auth-form">
-            <div>
+            <div className="input-group">
               <label htmlFor="username" className="auth-label">
                 Username
               </label>
@@ -54,7 +66,7 @@ const Register = () => {
               />
             </div>
 
-            <div>
+            <div className="input-group">
               <label htmlFor="email" className="auth-label">
                 Email
               </label>
@@ -69,7 +81,7 @@ const Register = () => {
               />
             </div>
 
-            <div>
+            <div className="input-group">
               <label htmlFor="password" className="auth-label">
                 Password
               </label>

@@ -5,6 +5,7 @@ import { setCurrentChatId } from "../chat.slice";
 import "../styles/dashboard.css";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { Send, ThumbsUp, ThumbsDown, Menu, X, MoreHorizontal, Trash2, LogOut } from "lucide-react";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,10 @@ const Dashboard = () => {
   } = useChat();
 
   const [newMessage, setNewMessage] = useState("");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Local UI state for the 3-dot dropdown menu
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
     initializeSocketConnection();
@@ -46,61 +51,108 @@ const Dashboard = () => {
   const openChat = (chatId) => {
     dispatch(setCurrentChatId(chatId));
     handleOpenChats(chatId, chats);
+    setIsMobileMenuOpen(false);
+    setActiveDropdown(null); // Close dropdown when a chat is opened
+  };
+
+  const toggleDropdown = (e, chatId) => {
+    e.stopPropagation(); // Prevents the chat from opening when clicking the 3 dots
+    setActiveDropdown(activeDropdown === chatId ? null : chatId);
   };
 
   return (
     <div className="dashboard-container">
+      {/* Mobile Overlay */}
+      <div 
+        className={`mobile-overlay ${isMobileMenuOpen ? "show" : ""}`} 
+        onClick={() => setIsMobileMenuOpen(false)}
+      ></div>
+
       {/* Sidebar */}
-      <div className="sidebar">
-        <div className="sidebar-header">
-          <h1 className="sidebar-title">VERITAS-AI</h1>
-        </div>
+      <div className={`sidebar ${isMobileMenuOpen ? "mobile-open" : ""}`}>
+        <div className="sidebar-top">
+          <div className="sidebar-header flex-between">
+            <h1 className="sidebar-title">VERITAS-AI</h1>
+            <button className="mobile-close-btn" onClick={() => setIsMobileMenuOpen(false)}>
+              <X size={20} />
+            </button>
+          </div>
 
-        <button
-          onClick={() => dispatch(setCurrentChatId(null))}
-          className="new-chat-btn"
-        >
-          <span className="plus-icon">+</span> New Chat
-        </button>
+          <button
+            onClick={() => {
+              dispatch(setCurrentChatId(null));
+              setIsMobileMenuOpen(false);
+            }}
+            className="new-chat-btn"
+          >
+            <span className="plus-icon">+</span> New Chat
+          </button>
 
-        <div className="recent-history">
-          <h3 className="history-title">RECENT HISTORY</h3>
-          <div className="history-list">
-            {Object.values(chats).length > 0 ? (
-              Object.values(chats).map((chat) => (
-                <button
-                  onClick={() => {
-                    openChat(chat.id);
-                  }}
-                  key={chat.id}
-                  type="button"
-                  className={`history-item ${currentChatId === chat.id ? "active" : ""}`}
-                  title={chat.title}
-                >
-                  <span className="history-icon">💬</span>
-                  <div className="history-content">
-                    <p className="history-title-text">{chat.title}</p>
-                    {chat.lastUpdated && (
-                      <p className="history-time">
-                        {new Date(chat.lastUpdated).toLocaleDateString()}
-                      </p>
-                    )}
+          <div className="recent-history">
+            <h3 className="history-title">RECENT HISTORY</h3>
+            <div className="history-list">
+              {Object.values(chats).length > 0 ? (
+                Object.values(chats).map((chat) => (
+                  <div
+                    key={chat.id}
+                    className={`history-item ${currentChatId === chat.id ? "active" : ""}`}
+                    onClick={() => openChat(chat.id)}
+                  >
+                    <div className="history-content">
+                      <p className="history-title-text" title={chat.title}>{chat.title}</p>
+                      {chat.lastUpdated && (
+                        <p className="history-time">
+                          {new Date(chat.lastUpdated).toLocaleDateString()}
+                        </p>
+                      )}
+                    </div>
+                    
+                    {/* 3-Dot Menu Area */}
+                    <div className="history-menu-container">
+                      <button 
+                        className="more-options-btn"
+                        onClick={(e) => toggleDropdown(e, chat.id)}
+                      >
+                        <MoreHorizontal size={16} />
+                      </button>
+                      
+                      {activeDropdown === chat.id && (
+                        <div 
+                          className="dropdown-menu" 
+                          onMouseLeave={() => setActiveDropdown(null)}
+                        >
+                          <button 
+                            className="dropdown-item delete-item"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              // UI behavior only: Close dropdown after clicking delete
+                              console.log("Delete button clicked for chat:", chat.id);
+                              setActiveDropdown(null);
+                            }}
+                          >
+                            <Trash2 size={14} /> Delete
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </button>
-              ))
-            ) : (
-              <p style={{ fontSize: "12px", color: "#666", padding: "10px" }}>
-                No chats yet
-              </p>
-            )}
+                ))
+              ) : (
+                <p className="empty-history">No chats yet</p>
+              )}
+            </div>
           </div>
         </div>
 
-        <div className="user-profile">
-          <div className="user-avatar"> {user?.username ? user.username.charAt(0).toUpperCase() : "U"}</div>
-          <div className="user-info">
-            <p className="user-name">{user?.username || "John Doe"}</p>
-            <p className="user-status">Verified User</p>
+        <div className="sidebar-bottom">
+          <div className="user-profile">
+            <div className="user-avatar">
+              {user?.username ? user.username.charAt(0).toUpperCase() : "U"}
+            </div>
+            <div className="user-info">
+              <p className="user-name">{user?.username || "John Doe"}</p>
+              <p className="user-status">Verified User</p>
+            </div>
           </div>
         </div>
       </div>
@@ -109,47 +161,89 @@ const Dashboard = () => {
       <div className="chat-container">
         {/* Header */}
         <div className="chat-header">
-          <span className="model-badge">● MODEL: VERITAS-V1</span>
-          <button className="share-btn">⬆</button>
+          <div className="header-left">
+            <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(true)}>
+              <Menu size={20} />
+            </button>
+            <span className="model-badge">● MODEL: VERITAS-V1</span>
+          </div>
+          
+          <button 
+            className="logout-btn" 
+            onClick={() => console.log("Add your logout dispatch logic here")}
+          >
+            <LogOut size={16} />
+            <span>Logout</span>
+          </button>
         </div>
 
         {/* Messages Area */}
         <div className="messages-area">
-          {!currentChatId ||
-          !chats[currentChatId] ||
-          chats[currentChatId]?.messages.length === 0 ? (
-            <div className="empty-chat">
-              <h2>Start a new conversation</h2>
-              <p>Select a chat from the history or create a new one to begin</p>
-            </div>
-          ) : (
-            <>
-              {chats[currentChatId]?.messages.map((msg, idx) => (
-                <div key={idx} className={`message ${msg.role}`}>
-                  {msg.role === "user" ? (
-                    <div className="user-message-content">{msg.content}</div>
-                  ) : (
-                    <div className="ai-message-content">
-                      <div className="ai-header">✓ Veritas-AI Response</div>
-                      <div className="markdown-content">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          <div className="messages-wrapper">
+            {!currentChatId ||
+            !chats[currentChatId] ||
+            chats[currentChatId]?.messages.length === 0 ? (
+              <div className="empty-chat">
+                <h2 className="empty-title">How can I help you today?</h2>
+                <p className="empty-desc">
+                  Search the internet or ask a complex question to get started.
+                </p>
+              </div>
+            ) : (
+              <>
+                {chats[currentChatId]?.messages.map((msg, idx) => (
+                  <div key={idx} className={`message-row ${msg.role === "user" ? "user" : "ai"}`}>
+                    {msg.role === "user" ? (
+                      <>
+                        <div className="message-bubble user-bubble">
                           {msg.content}
-                        </ReactMarkdown>
+                        </div>
+                        <div className="message-meta">
+                          <span className="timestamp">
+                            {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ✓✓
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="message-bubble ai-bubble">
+                          <div className="markdown-content">
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                              {msg.content}
+                            </ReactMarkdown>
+                          </div>
+                        </div>
+                        <div className="message-meta">
+                          <span className="timestamp">
+                             {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                          </span>
+                          <div className="ai-actions">
+                            <button className="action-btn">
+                              <ThumbsUp size={14} />
+                            </button>
+                            <button className="action-btn">
+                              <ThumbsDown size={14} />
+                            </button>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))}
+                {isLoading && (
+                  <div className="message-row ai">
+                    <div className="message-bubble ai-bubble">
+                      <div className="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                       </div>
                     </div>
-                  )}
-                </div>
-              ))}
-              {isLoading && (
-                <div className="message ai">
-                  <div className="ai-message-content">
-                    <div className="ai-header">✓ Veritas-AI Response</div>
-                    <p className="loading-text">Thinking...</p>
                   </div>
-                </div>
-              )}
-            </>
-          )}
+                )}
+              </>
+            )}
+          </div>
         </div>
 
         {/* Input Area */}
@@ -169,12 +263,11 @@ const Dashboard = () => {
               disabled={isLoading || !newMessage.trim()}
               className="send-btn"
             >
-              ✈
+              <Send size={18} />
             </button>
           </div>
           <p className="footer-text">
-            VERITAS-AI MAY PRODUCE INACCURATE INFORMATION ABOUT PEOPLE, PLACES,
-            OR FACTS
+            VERITAS-AI SEARCHES THE WEB TO ASSIST YOU, BUT ALWAYS VERIFY IMPORTANT FACTS
           </p>
         </div>
       </div>
