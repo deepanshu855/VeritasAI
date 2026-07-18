@@ -3,8 +3,12 @@ import express from "express";
 import cookiePareser from "cookie-parser";
 import cors from "cors";
 import morgan from "morgan";
+import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Import routes & middleware
 import authRouter from "./routes/auth.routes.js";
@@ -22,10 +26,15 @@ app.use(
   }),
 );
 app.use(morgan("dev"));
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api/chats", chatRouter);
+
+app.use("*name", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+});
 
 app.use(handleError);
 

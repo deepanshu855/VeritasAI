@@ -25,7 +25,6 @@ export const useChat = () => {
     console.log("Hook ", message, chatId);
     const data = await sendMessage({ message, chatId });
     const { chat, aiResponse } = data;
-    console.log("Api response ", chat, aiResponse);
     if (!chatId) {
       dispatch(
         createNewChat({
