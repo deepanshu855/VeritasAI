@@ -30,7 +30,7 @@ const VerifyEmail = () => {
     };
 
     verify();
-  }, [searchParams, handleVerifyEmail]);
+  }, []);
 
   if (loading) {
     return (
