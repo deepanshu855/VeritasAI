@@ -39,7 +39,7 @@ export const registerController = async (req, res, next) => {
     <h2>Welcome to Veritas AI! 🎉</h2>
     <p>You're all set to start exploring AI-powered conversations, web research, and more.</p>
     <p>Please, verify yourself...</p>
-    <a href=http://localhost:3000/api/auth/verify-email?token=${emailToken}>Verify Email</a>
+    <a href=https://veritasai-v214.onrender.com/api/auth/verify-email?token=${emailToken}>Verify Email</a>
     <br>
     <p><strong>— The Veritas AI Team</strong></p>
   `,
@@ -218,19 +218,34 @@ export const getMeController = async (req, res, next) => {
 
 // This sends the password reset email.
 export const forgotPasswordController = async (req, res, next) => {
+  console.log("====================================");
+  console.log("forgotPasswordController called");
+
   const { email } = req.body;
+
+  console.log("Email received:", email);
 
   const user = await userModel.findOne({ email });
 
+  console.log("User lookup completed");
+
   if (!user) {
+    console.log("User not found");
+
     const error = new Error("User doesn't exist");
     error.status = 403;
     return next(error);
   }
 
+  console.log("User found:", user.email);
+
   const emailToken = jwt.sign({ email }, process.env.JWT_SECRET, {
     expiresIn: "1h",
   });
+
+  console.log("JWT token generated");
+
+  console.log("About to call sendEmail()");
 
   await sendEmail({
     to: email,
@@ -239,18 +254,24 @@ export const forgotPasswordController = async (req, res, next) => {
       <h2>Reset Your Password 🔒</h2>
       <p>We received a request to reset your Veritas AI account password.</p>
       <p>Click the link below to set a new password.</p>
-      <a href="http://localhost:5173/reset-password?token=${emailToken}">Reset Password</a>
+      <a href="https://veritasai-v214.onrender.com/reset-password?token=${emailToken}">Reset Password</a>
       <br>
       <p>If you didn't request this, you can safely ignore this email.</p>
       <p><strong>— The Veritas AI Team</strong></p>
     `,
   });
 
+  console.log("sendEmail() completed successfully");
+
+  console.log("Sending success response");
+
   res.status(200).json({
     success: true,
     message: "Reset password email sent successfully",
     email,
   });
+
+  console.log("Response sent");
 };
 
 export const resetPasswordController = async (req, res, next) => {

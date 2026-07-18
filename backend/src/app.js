@@ -25,8 +25,13 @@ app.use(
     credentials: true,
   }),
 );
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "..", "public")));
+
+console.log("GOOGLE_USER:", process.env.GOOGLE_USER);
+console.log("CLIENT_ID exists:", !!process.env.GOOGLE_CLIENT_ID);
+console.log("CLIENT_SECRET exists:", !!process.env.GOOGLE_CLIENT_SECRET);
+console.log("REFRESH_TOKEN exists:", !!process.env.GOOGLE_REFRESH_TOKEN);
 
 // Routes
 app.use("/api/auth", authRouter);
