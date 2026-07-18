@@ -220,6 +220,8 @@ export const getMeController = async (req, res, next) => {
 export const forgotPasswordController = async (req, res, next) => {
   const { email } = req.body;
 
+  console.log(`🚨 ROUTE HIT: Forgot password triggered for ${email}`);
+
   try {
     const user = await userModel.findOne({ email });
 
