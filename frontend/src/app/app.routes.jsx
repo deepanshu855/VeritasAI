@@ -5,11 +5,12 @@ import Dashboard from "../features/chat/pages/Dashboard";
 import Protected from "../features/auth/component/Protected";
 import Landing from "../features/shared/pages/Landing";
 import ResetPassword from "../features/auth/component/ResetPassword";
+import PageNotFound from "../features/shared/components/PageNotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />
+    element: <Landing />,
   },
   {
     path: "/login",
@@ -30,5 +31,9 @@ export const router = createBrowserRouter([
   {
     path: "/reset-password",
     element: <ResetPassword />,
+  },
+  {
+    path: "*",
+    element: <PageNotFound />,
   },
 ]);
