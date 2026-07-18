@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const user = useSelector((state) => state.auth.user);
 
   const chats = useSelector((state) => state.chat.chats);
@@ -32,6 +33,7 @@ const Dashboard = () => {
     handleSendMessage,
     handleGetChats,
     handleOpenChats,
+    handleDeleteChats,
   } = useChat();
 
   const { handleLogout } = useAuth();
@@ -67,6 +69,10 @@ const Dashboard = () => {
     handleOpenChats(chatId, chats);
     setIsMobileMenuOpen(false);
     setActiveDropdown(null); // Close dropdown when a chat is opened
+  };
+
+  const chatDelete = (chatId) => {
+    handleDeleteChats(chatId);
   };
 
   const submitLogout = () => {
@@ -148,12 +154,9 @@ const Dashboard = () => {
                           <button
                             className="dropdown-item delete-item"
                             onClick={(e) => {
+                              chatDelete(chat.id);
                               e.stopPropagation();
                               // UI behavior only: Close dropdown after clicking delete
-                              console.log(
-                                "Delete button clicked for chat:",
-                                chat.id,
-                              );
                               setActiveDropdown(null);
                             }}
                           >
@@ -198,10 +201,7 @@ const Dashboard = () => {
             <span className="model-badge">● MODEL: VERITAS-V1</span>
           </div>
 
-          <button
-            onClick={submitLogout}
-            className="logout-btn"
-          >
+          <button onClick={submitLogout} className="logout-btn">
             <LogOut size={16} />
             <span>Logout</span>
           </button>

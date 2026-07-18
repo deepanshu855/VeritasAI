@@ -92,10 +92,24 @@ export const useChat = () => {
     }
   };
 
+  const handleDeleteChats = async (chatId) => {
+    try {
+      dispatch(setLoading(true));
+      const response = await deleteChat(chatId);
+      await handleGetChats();
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || "deletion failed";
+      dispatch(setError(errorMessage));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
   return {
     initializeSocketConnection,
     handleSendMessage,
     handleGetChats,
     handleOpenChats,
+    handleDeleteChats
   };
 };

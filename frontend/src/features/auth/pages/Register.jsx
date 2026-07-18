@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useSelector } from "react-redux";
 import "../styles/auth.css";
@@ -12,6 +12,12 @@ const Register = () => {
   const loading = useSelector((state) => state.auth.loading);
 
   const { handleRegister } = useAuth();
+
+  const user = useSelector((state) => state.auth.user);
+
+  if (user) {
+    return <Navigate to="/dashboard" />;
+  }
 
   if (loading) {
     return (

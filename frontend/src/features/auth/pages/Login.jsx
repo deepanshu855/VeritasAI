@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth.js";
 import "../styles/auth.css";
 
@@ -14,6 +14,10 @@ const Login = () => {
   const error = useSelector((state) => state.auth.error);
 
   const { handleLogin } = useAuth();
+
+  if (user) {
+    return <Navigate to="/dashboard" />;
+  }
 
   if (loading) {
     return (
@@ -41,11 +45,13 @@ const Login = () => {
     <section className="auth-page">
       <div className="auth-wrapper">
         <div className="auth-brand">VERITAS-AI</div>
-        
+
         <div className="auth-card">
           <div className="auth-header">
             <h1 className="auth-heading">Welcome Back</h1>
-            <p className="auth-subtitle">Sign in with your email and password.</p>
+            <p className="auth-subtitle">
+              Sign in with your email and password.
+            </p>
           </div>
 
           <form onSubmit={submitForm} className="auth-form">

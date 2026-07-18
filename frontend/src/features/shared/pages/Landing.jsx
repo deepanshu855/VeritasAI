@@ -7,7 +7,7 @@ import About from "../components/About";
 import "../styles/landing.css";
 
 const Landing = () => {
-  const [activeSection, setActiveSection] = useState("hero"); // "hero", "features", or "about"
+  const [activeSection, setActiveSection] = useState("hero"); 
 
   const handleNavClick = (section) => {
     setActiveSection(section);
@@ -40,7 +40,7 @@ const Landing = () => {
           </p>
 
           <div className="hero-ctas">
-            <Link to="/dashboard" className="cta-primary">
+            <Link to="/login" className="cta-primary">
               Start Chat <ArrowUpRight size={18} strokeWidth={2.5} />
             </Link>
             <button
