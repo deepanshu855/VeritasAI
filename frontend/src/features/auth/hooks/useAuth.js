@@ -4,6 +4,7 @@ import {
   registerUser,
   getMe,
   resetPassword,
+  logout,
 } from "../services/auth.api";
 import { setUser, setLoading, setError } from "../auth.slice";
 
@@ -63,10 +64,25 @@ export const useAuth = () => {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      dispatch(setLoading(true));
+      const data = await logout();
+      dispatch(setUser(null));
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || "Logout failed";
+
+      dispatch(setError(errorMessage));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
   return {
     handleLogin,
     handleRegister,
     handleGetMe,
     handleResetPassword,
+    handleLogout,
   };
 };

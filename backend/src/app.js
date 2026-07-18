@@ -10,6 +10,7 @@ const app = express();
 import authRouter from "./routes/auth.routes.js";
 import chatRouter from "./routes/chat.route.js";
 import handleError from "./middlewares/error.middleware.js";
+import { identifyUser } from "./middlewares/auth.middleware.js";
 
 // Middleware
 app.use(express.json());

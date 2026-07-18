@@ -3,6 +3,7 @@ import {
   forgotPasswordController,
   getMeController,
   loginController,
+  logoutController,
   registerController,
   resendVerifyEmailController,
   resetPasswordController,
@@ -29,5 +30,7 @@ authRouter.post(
   resetPasswordValidator,
   resetPasswordController,
 ); // Need to add reset password route
+
+authRouter.get("/logout", identifyUser, logoutController);
 
 export default authRouter;

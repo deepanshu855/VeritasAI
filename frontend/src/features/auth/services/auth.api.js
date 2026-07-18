@@ -36,5 +36,10 @@ export const resetPassword = async (newPassword, token) => {
   const response = await instance.post(`/reset-password?token=${token}`, {
     newPassword,
   });
-  return response.data
+  return response.data;
+};
+
+export const logout = async () => {
+  const response = await instance.get("/logout");
+  return response.data;
 };
