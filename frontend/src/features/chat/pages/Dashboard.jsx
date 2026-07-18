@@ -16,7 +16,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { useAuth } from "../../auth/hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setUser } from "../../auth/auth.slice";
 
 const Dashboard = () => {
@@ -99,7 +99,9 @@ const Dashboard = () => {
       <div className={`sidebar ${isMobileMenuOpen ? "mobile-open" : ""}`}>
         <div className="sidebar-top">
           <div className="sidebar-header flex-between">
-            <h1 className="sidebar-title">VERITAS-AI</h1>
+            <Link className="sidebar-title" to="/">
+              VERITAS-AI
+            </Link>
             <button
               className="mobile-close-btn"
               onClick={() => setIsMobileMenuOpen(false)}
