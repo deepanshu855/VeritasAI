@@ -10,10 +10,9 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const loading = useSelector((state) => state.auth.loading);
+  const user = useSelector((state) => state.auth.user);
 
   const { handleRegister } = useAuth();
-
-  const user = useSelector((state) => state.auth.user);
 
   if (user) {
     return <Navigate to="/dashboard" />;

@@ -12,7 +12,7 @@ export const registerController = async (req, res, next) => {
   });
 
   if (isUserAlreadyExists) {
-    const error = new Error("Useralready exists with email or username");
+    const error = new Error("User already exists with email or username");
     error.status = 409;
     return next(error);
   }

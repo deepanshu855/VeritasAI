@@ -15,6 +15,7 @@ import {
   createNewChat,
 } from "../chat.slice.js";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 export const useChat = () => {
   const dispatch = useDispatch();
@@ -96,10 +97,15 @@ export const useChat = () => {
     try {
       dispatch(setLoading(true));
       const response = await deleteChat(chatId);
+      toast.success("Chat deleted successfully", {
+        autoClose: 1000,
+      });
       await handleGetChats();
     } catch (error) {
       const errorMessage = error.response?.data?.message || "deletion failed";
-      dispatch(setError(errorMessage));
+      toast.error(errorMessage, {
+        autoClose: 1000,
+      });
     } finally {
       dispatch(setLoading(false));
     }
@@ -110,6 +116,6 @@ export const useChat = () => {
     handleSendMessage,
     handleGetChats,
     handleOpenChats,
-    handleDeleteChats
+    handleDeleteChats,
   };
 };

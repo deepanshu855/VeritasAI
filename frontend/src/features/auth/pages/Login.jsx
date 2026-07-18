@@ -11,7 +11,6 @@ const Login = () => {
 
   const user = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
-  const error = useSelector((state) => state.auth.error);
 
   const { handleLogin, handleForgotPassword } = useAuth();
 
@@ -97,8 +96,6 @@ const Login = () => {
                 className="auth-input"
               />
             </div>
-
-            {error && <div className="auth-error">{error}</div>}
 
             <button type="submit" className="auth-button">
               Login

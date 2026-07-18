@@ -8,6 +8,7 @@ import {
   forgotPassword,
 } from "../services/auth.api";
 import { setUser, setLoading, setError } from "../auth.slice";
+import { toast } from "react-toastify";
 
 export const useAuth = () => {
   const dispatch = useDispatch();
@@ -16,10 +17,17 @@ export const useAuth = () => {
     try {
       dispatch(setLoading(true));
       const data = await registerUser({ email, username, password });
+      toast.success("Verification email sent successfully", {
+        autoClose: 1000,
+      });
     } catch (error) {
-      dispatch(
-        setError(error.response?.data?.message || "Registration failed"),
-      );
+      const errorMessage =
+        error.response?.data?.errors?.[0]?.msg ||
+        error.response?.data?.message ||
+        "Registration failed";
+      toast.error(errorMessage, {
+        autoClose: 1000,
+      });
     } finally {
       dispatch(setLoading(false));
     }
@@ -30,13 +38,18 @@ export const useAuth = () => {
       dispatch(setLoading(true));
       const data = await loginUser({ email, password });
       dispatch(setUser(data.user));
+      toast.success("Login successfully", {
+        autoClose: 1000,
+      });
     } catch (error) {
       const errorMessage =
         error.response?.data?.errors?.[0]?.msg ||
         error.response?.data?.message ||
         "Login failed";
 
-      dispatch(setError(errorMessage));
+      toast.error(errorMessage, {
+        autoClose: 1000,
+      });
     } finally {
       dispatch(setLoading(false));
     }
@@ -56,11 +69,14 @@ export const useAuth = () => {
   const handleForgotPassword = async (email) => {
     try {
       dispatch(setLoading(true));
-      console.log("Hook: ", email)
+      console.log("Hook: ", email);
       const data = await forgotPassword(email);
+      toast.success("Forgot password mail sent successfully");
     } catch (error) {
       const errorMessage = error.response?.data?.message || "Cannot send mail";
-      dispatch(setError(errorMessage));
+      toast.error(errorMessage, {
+        autoClose: 1000,
+      });
     } finally {
       dispatch(setLoading(false));
     }
@@ -70,8 +86,13 @@ export const useAuth = () => {
     try {
       dispatch(setLoading(true));
       const data = await resetPassword(password, token);
+      toast.success("Password updated successfully", {
+        autoClose: 1000,
+      });
     } catch (error) {
-      setError(error.response);
+      toast.error(error.response?.data?.message || "Password Update failed", {
+        autoClose: 1000,
+      });
     } finally {
       dispatch(setLoading(false));
     }
@@ -82,6 +103,9 @@ export const useAuth = () => {
       dispatch(setLoading(true));
       const data = await logout();
       dispatch(setUser(null));
+      toast.success("Logout successfully", {
+        autoClose: 1000,
+      });
     } catch (error) {
       const errorMessage = error.response?.data?.message || "Logout failed";
 
