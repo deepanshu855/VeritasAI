@@ -22,7 +22,6 @@ export const useChat = () => {
 
   const handleSendMessage = async ({ message, chatId }) => {
     dispatch(setLoading(true));
-    console.log("Hook ", message, chatId);
     const data = await sendMessage({ message, chatId });
     const { chat, aiResponse } = data;
     if (!chatId) {

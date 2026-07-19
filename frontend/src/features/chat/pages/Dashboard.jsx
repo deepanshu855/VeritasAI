@@ -299,7 +299,6 @@ const Dashboard = () => {
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSubmitMessage()}
-              disabled={!currentChatId && Object.keys(chats).length === 0}
               className="chat-input"
             />
             <button

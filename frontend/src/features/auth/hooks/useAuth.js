@@ -20,7 +20,7 @@ export const useAuth = () => {
       dispatch(setLoading(true));
       const data = await registerUser({ email, username, password });
       toast.success("Verification email sent successfully", {
-        autoClose: 1000,
+        autoClose: 5000,
       });
     } catch (error) {
       const errorMessage =
@@ -28,7 +28,7 @@ export const useAuth = () => {
         error.response?.data?.message ||
         "Registration failed";
       toast.error(errorMessage, {
-        autoClose: 1000,
+        autoClose: 5000,
       });
     } finally {
       dispatch(setLoading(false));
@@ -50,7 +50,7 @@ export const useAuth = () => {
         "Login failed";
 
       toast.error(errorMessage, {
-        autoClose: 1000,
+        autoClose: 3000,
       });
 
       throw error;
@@ -75,11 +75,13 @@ export const useAuth = () => {
       dispatch(setLoading(true));
       console.log("Hook: ", email);
       const data = await forgotPassword(email);
-      toast.success("Forgot password mail sent successfully");
+      toast.success("Forgot password mail sent successfully", {
+        autoClose:5000
+      });
     } catch (error) {
       const errorMessage = error.response?.data?.message || "Cannot send mail";
       toast.error(errorMessage, {
-        autoClose: 1000,
+        autoClose: 3000,
       });
     } finally {
       dispatch(setLoading(false));
@@ -91,11 +93,11 @@ export const useAuth = () => {
       dispatch(setLoading(true));
       const data = await resetPassword(password, token);
       toast.success("Password updated successfully", {
-        autoClose: 1000,
+        autoClose: 2000,
       });
     } catch (error) {
       toast.error(error.response?.data?.message || "Password Update failed", {
-        autoClose: 1000,
+        autoClose: 3000,
       });
     } finally {
       dispatch(setLoading(false));
