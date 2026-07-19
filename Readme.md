@@ -162,9 +162,8 @@ The application is built with a focus on simplicity, performance, and security w
 
 **Deepanshu Sharma**
 
-- GitHub: *Your GitHub Link*
-- LinkedIn: *Your LinkedIn Link*
-- Portfolio: *Your Portfolio Link*
+- GitHub: [*Your GitHub Link*](https://github.com/deepanshu855/)
+- LinkedIn: *Your LinkedIn Link*https://www.linkedin.com/in/deepanshu-sharma-661572323/
 
 ---
 
