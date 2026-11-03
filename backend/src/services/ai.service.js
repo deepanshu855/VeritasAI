@@ -6,18 +6,32 @@ import {
   tool,
   createAgent,
 } from "langchain"
-import { ChatMistralAI } from "@langchain/mistralai";
+// import { ChatMistralAI } from "@langchain/mistralai";
+import {ChatGroq} from "@langchain/groq"
 import { tavilySearch } from "./internet.service.js";
 import * as z from "zod";
 
-const bigModel = new ChatMistralAI({
-  model: "mistral-medium-latest",
-  apiKey: process.env.MISTRAL_API_KEY,
+// const bigModel = new ChatMistralAI({
+//   model: "mistral-medium-latest",
+//   apiKey: process.env.MISTRAL_API_KEY,
+// });
+
+// const samllModel = new ChatMistralAI({
+//   model: "mistral-small-latest",
+//   apiKey: process.env.MISTRAL_API_KEY,
+// });
+
+const samllModel = new ChatGroq({
+  model: "openai/gpt-oss-20b",
+  apiKey: process.env.GROQ_API_KEY,
+  temperature: 0,
 });
 
-const samllModel = new ChatMistralAI({
-  model: "mistral-small-latest",
-  apiKey: process.env.MISTRAL_API_KEY,
+const bigModel = new ChatGroq({
+  model: "openai/gpt-oss-120b",
+  apiKey: process.env.GROQ_API_KEY,
+  temperature: 0,
+  maxTokens: 1024,
 });
 
 const searchInternetTool = tool(tavilySearch, {
