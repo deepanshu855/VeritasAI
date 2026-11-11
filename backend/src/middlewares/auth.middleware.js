@@ -10,14 +10,6 @@ export const identifyUser = async (req, res, next) => {
     return next(error);
   }
 
-  const isTokenBlacklisted = await redis.get(token);
-
-  if (isTokenBlacklisted) {
-    const error = new Error("Invalid token");
-    error.status = 401;
-    return next(error);
-  }
-
   let decoded;
 
   try {

@@ -2,7 +2,6 @@ import "dotenv/config";
 import userModel from "../models/user.model.js";
 import { sendEmail } from "../services/mail.services.js";
 import jwt from "jsonwebtoken";
-import { redis } from "../config/cache.js";
 
 export const registerController = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -279,11 +278,7 @@ export const resetPasswordController = async (req, res, next) => {
 };
 
 export const logoutController = async (req, res, next) => {
-  const token = req.cookies.token;
-  // console.log(req.cookies)
   res.clearCookie("token");
-
-  await redis.set(token, Date.now().toString(), "EX", 60 * 60);
 
   res.status(200).json({
     success: true,
