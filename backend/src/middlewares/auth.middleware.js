@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { redis } from "../config/cache.js";
 
 export const identifyUser = async (req, res, next) => {
   const { token } = req.cookies;
