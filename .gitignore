@@ -8,6 +8,13 @@ node_modules/
 **/.env
 **/.env.*
 
+
+.ocr-cache
+.ocr-cache.*
+**/.ocr-cache
+**/.ocr-cache.*
+
+
 # Build folders (optional)
 dist/
 build/
@@ -19,3 +26,4 @@ logs/
 # OS files (optional)
 .DS_Store
 Thumbs.db
+

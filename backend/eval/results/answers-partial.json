@@ -1,0 +1,225 @@
+{
+  "ranAt": "2026-11-15T15:47:41.484Z",
+  "chatId": "6af9b6d398c23e1f7d52ec98",
+  "conditions": {
+    "answerModel": "openai/gpt-oss-120b (Groq)",
+    "temperature": 0,
+    "maxTokens": 1024,
+    "retrieval": "hybrid, top 5 chunks",
+    "embeddingModel": "gemini-embedding-001:768",
+    "pauseMs": 20000
+  },
+  "summary": {
+    "answerable": {
+      "questions": 2,
+      "citedRightPage": 1,
+      "retrievedRightPage": 2,
+      "refusedWrongly": 1,
+      "uncited": 0
+    },
+    "notInPdf": {
+      "questions": 1,
+      "correctRefusal": 1,
+      "citedAnything": 0
+    },
+    "invalidCitationsTotal": 0,
+    "reformattedCitationsTotal": 0,
+    "medianAnswerMs": 879
+  },
+  "results": [
+    {
+      "id": 10,
+      "type": "term",
+      "text": "What is the range of TINYINT?",
+      "pages": [
+        2
+      ],
+      "answer": "TINYINT can store integer values from ‑128 to 127 [1]",
+      "citations": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 2
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 2
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 7
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 1
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 10
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 6
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 29,
+          "vectorCount": 20,
+          "keywordCount": 3,
+          "hybridCount": 20,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 929,
+          "vectorMs": 118,
+          "keywordMs": 430,
+          "totalMs": 1048,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 879
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 11,
+      "type": "term",
+      "text": "What is a primary key?",
+      "pages": [
+        3,
+        4
+      ],
+      "answer": "The document does not say this.",
+      "citations": [],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 1
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 4
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 3
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 14
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 8
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 22,
+          "vectorCount": 20,
+          "keywordCount": 5,
+          "hybridCount": 21,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 848,
+          "vectorMs": 114,
+          "keywordMs": 76,
+          "totalMs": 963,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": true,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 945
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": false,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 13,
+      "type": "none",
+      "text": "How do I bake a chocolate cake?",
+      "pages": [],
+      "answer": "The document does not say this.",
+      "citations": [],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 15
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 16
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 9
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 8
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 26
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 31,
+          "vectorCount": 20,
+          "keywordCount": 3,
+          "hybridCount": 21,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 836,
+          "vectorMs": 214,
+          "keywordMs": 63,
+          "totalMs": 1051,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": true,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 457
+      },
+      "retrievedRightPage": false,
+      "citedRightPage": false,
+      "retried": false,
+      "error": null
+    }
+  ]
+}

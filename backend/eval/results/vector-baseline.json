@@ -1,0 +1,1039 @@
+{
+  "ranAt": "2026-11-15T13:50:51.179Z",
+  "chatId": "6af9b6d398c23e1f7d52ec98",
+  "embeddingModel": "gemini-embedding-001:768",
+  "limit": 10,
+  "k": 5,
+  "summary": {
+    "overall": {
+      "questions": 12,
+      "hitAt5": 11,
+      "hitAt10": 12,
+      "mrr": 0.75
+    },
+    "meaning": {
+      "questions": 6,
+      "hitAt5": 5,
+      "hitAt10": 6,
+      "mrr": 0.583
+    },
+    "term": {
+      "questions": 6,
+      "hitAt5": 6,
+      "hitAt10": 6,
+      "mrr": 0.917
+    }
+  },
+  "results": [
+    {
+      "id": 1,
+      "type": "meaning",
+      "text": "Is SQL itself a database?",
+      "pages": [
+        1
+      ],
+      "rank": 1,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 1,
+          "chunk": 0,
+          "score": 0.8576
+        },
+        {
+          "page": 3,
+          "chunk": 2,
+          "score": 0.8321
+        },
+        {
+          "page": 10,
+          "chunk": 9,
+          "score": 0.8295
+        },
+        {
+          "page": 12,
+          "chunk": 11,
+          "score": 0.828
+        },
+        {
+          "page": 4,
+          "chunk": 3,
+          "score": 0.8262
+        },
+        {
+          "page": 14,
+          "chunk": 13,
+          "score": 0.8235
+        },
+        {
+          "page": 2,
+          "chunk": 1,
+          "score": 0.8211
+        },
+        {
+          "page": 27,
+          "chunk": 26,
+          "score": 0.8131
+        },
+        {
+          "page": 22,
+          "chunk": 21,
+          "score": 0.813
+        },
+        {
+          "page": 11,
+          "chunk": 10,
+          "score": 0.8097
+        }
+      ],
+      "stats": {
+        "questionChars": 25,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 541,
+        "searchMs": 173
+      },
+      "error": null
+    },
+    {
+      "id": 2,
+      "type": "meaning",
+      "text": "How do I make lookups on a column faster?",
+      "pages": [
+        4
+      ],
+      "rank": 6,
+      "hitAt5": false,
+      "top": [
+        {
+          "page": 28,
+          "chunk": 27,
+          "score": 0.8092
+        },
+        {
+          "page": 29,
+          "chunk": 28,
+          "score": 0.8072
+        },
+        {
+          "page": 27,
+          "chunk": 26,
+          "score": 0.8064
+        },
+        {
+          "page": 2,
+          "chunk": 1,
+          "score": 0.7992
+        },
+        {
+          "page": 21,
+          "chunk": 20,
+          "score": 0.7969
+        },
+        {
+          "page": 4,
+          "chunk": 3,
+          "score": 0.7967
+        },
+        {
+          "page": 7,
+          "chunk": 6,
+          "score": 0.7956
+        },
+        {
+          "page": 16,
+          "chunk": 15,
+          "score": 0.793
+        },
+        {
+          "page": 5,
+          "chunk": 4,
+          "score": 0.7927
+        },
+        {
+          "page": 6,
+          "chunk": 5,
+          "score": 0.7925
+        }
+      ],
+      "stats": {
+        "questionChars": 41,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 457,
+        "searchMs": 132
+      },
+      "error": null
+    },
+    {
+      "id": 3,
+      "type": "meaning",
+      "text": "How do I undo changes if something fails midway in a transaction?",
+      "pages": [
+        13
+      ],
+      "rank": 1,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 13,
+          "chunk": 12,
+          "score": 0.8481
+        },
+        {
+          "page": 14,
+          "chunk": 13,
+          "score": 0.8243
+        },
+        {
+          "page": 12,
+          "chunk": 11,
+          "score": 0.8058
+        },
+        {
+          "page": 3,
+          "chunk": 2,
+          "score": 0.7972
+        },
+        {
+          "page": 10,
+          "chunk": 9,
+          "score": 0.7862
+        },
+        {
+          "page": 11,
+          "chunk": 10,
+          "score": 0.7844
+        },
+        {
+          "page": 4,
+          "chunk": 3,
+          "score": 0.7819
+        },
+        {
+          "page": 1,
+          "chunk": 0,
+          "score": 0.781
+        },
+        {
+          "page": 29,
+          "chunk": 28,
+          "score": 0.7754
+        },
+        {
+          "page": 23,
+          "chunk": 22,
+          "score": 0.7753
+        }
+      ],
+      "stats": {
+        "questionChars": 65,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 423,
+        "searchMs": 153
+      },
+      "error": null
+    },
+    {
+      "id": 4,
+      "type": "meaning",
+      "text": "How can I let a user read a table?",
+      "pages": [
+        11
+      ],
+      "rank": 2,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 3,
+          "chunk": 2,
+          "score": 0.8238
+        },
+        {
+          "page": 11,
+          "chunk": 10,
+          "score": 0.819
+        },
+        {
+          "page": 1,
+          "chunk": 0,
+          "score": 0.8172
+        },
+        {
+          "page": 4,
+          "chunk": 3,
+          "score": 0.8152
+        },
+        {
+          "page": 5,
+          "chunk": 4,
+          "score": 0.8126
+        },
+        {
+          "page": 16,
+          "chunk": 15,
+          "score": 0.8122
+        },
+        {
+          "page": 14,
+          "chunk": 13,
+          "score": 0.8071
+        },
+        {
+          "page": 12,
+          "chunk": 11,
+          "score": 0.8069
+        },
+        {
+          "page": 23,
+          "chunk": 22,
+          "score": 0.8068
+        },
+        {
+          "page": 17,
+          "chunk": 16,
+          "score": 0.8051
+        }
+      ],
+      "stats": {
+        "questionChars": 34,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 439,
+        "searchMs": 122
+      },
+      "error": null
+    },
+    {
+      "id": 5,
+      "type": "meaning",
+      "text": "How do I list each employee with their manager's name?",
+      "pages": [
+        20,
+        21
+      ],
+      "rank": 2,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 22,
+          "chunk": 21,
+          "score": 0.8296
+        },
+        {
+          "page": 21,
+          "chunk": 20,
+          "score": 0.8248
+        },
+        {
+          "page": 23,
+          "chunk": 22,
+          "score": 0.7984
+        },
+        {
+          "page": 16,
+          "chunk": 15,
+          "score": 0.7975
+        },
+        {
+          "page": 25,
+          "chunk": 24,
+          "score": 0.7948
+        },
+        {
+          "page": 18,
+          "chunk": 17,
+          "score": 0.7936
+        },
+        {
+          "page": 17,
+          "chunk": 16,
+          "score": 0.7929
+        },
+        {
+          "page": 19,
+          "chunk": 18,
+          "score": 0.7915
+        },
+        {
+          "page": 5,
+          "chunk": 4,
+          "score": 0.791
+        },
+        {
+          "page": 20,
+          "chunk": 19,
+          "score": 0.7887
+        }
+      ],
+      "stats": {
+        "questionChars": 54,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 454,
+        "searchMs": 143
+      },
+      "error": null
+    },
+    {
+      "id": 6,
+      "type": "meaning",
+      "text": "How do I combine two queries and keep the duplicate rows?",
+      "pages": [
+        24,
+        25
+      ],
+      "rank": 3,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 26,
+          "chunk": 25,
+          "score": 0.8637
+        },
+        {
+          "page": 23,
+          "chunk": 22,
+          "score": 0.863
+        },
+        {
+          "page": 24,
+          "chunk": 23,
+          "score": 0.8528
+        },
+        {
+          "page": 25,
+          "chunk": 24,
+          "score": 0.8428
+        },
+        {
+          "page": 16,
+          "chunk": 15,
+          "score": 0.8382
+        },
+        {
+          "page": 22,
+          "chunk": 21,
+          "score": 0.8374
+        },
+        {
+          "page": 17,
+          "chunk": 16,
+          "score": 0.8347
+        },
+        {
+          "page": 27,
+          "chunk": 26,
+          "score": 0.834
+        },
+        {
+          "page": 18,
+          "chunk": 17,
+          "score": 0.8314
+        },
+        {
+          "page": 29,
+          "chunk": 28,
+          "score": 0.8297
+        }
+      ],
+      "stats": {
+        "questionChars": 57,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 480,
+        "searchMs": 114
+      },
+      "error": null
+    },
+    {
+      "id": 7,
+      "type": "term",
+      "text": "What does GROUP BY do?",
+      "pages": [
+        8,
+        9
+      ],
+      "rank": 1,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 9,
+          "chunk": 8,
+          "score": 0.869
+        },
+        {
+          "page": 8,
+          "chunk": 7,
+          "score": 0.838
+        },
+        {
+          "page": 10,
+          "chunk": 9,
+          "score": 0.8221
+        },
+        {
+          "page": 1,
+          "chunk": 0,
+          "score": 0.8063
+        },
+        {
+          "page": 14,
+          "chunk": 13,
+          "score": 0.8062
+        },
+        {
+          "page": 6,
+          "chunk": 5,
+          "score": 0.8059
+        },
+        {
+          "page": 23,
+          "chunk": 22,
+          "score": 0.8055
+        },
+        {
+          "page": 7,
+          "chunk": 6,
+          "score": 0.8054
+        },
+        {
+          "page": 24,
+          "chunk": 23,
+          "score": 0.8008
+        },
+        {
+          "page": 4,
+          "chunk": 3,
+          "score": 0.7998
+        }
+      ],
+      "stats": {
+        "questionChars": 22,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 476,
+        "searchMs": 152
+      },
+      "error": null
+    },
+    {
+      "id": 8,
+      "type": "term",
+      "text": "What is HAVING used for?",
+      "pages": [
+        9
+      ],
+      "rank": 1,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 9,
+          "chunk": 8,
+          "score": 0.8487
+        },
+        {
+          "page": 7,
+          "chunk": 6,
+          "score": 0.8237
+        },
+        {
+          "page": 8,
+          "chunk": 7,
+          "score": 0.8227
+        },
+        {
+          "page": 10,
+          "chunk": 9,
+          "score": 0.8193
+        },
+        {
+          "page": 28,
+          "chunk": 27,
+          "score": 0.8188
+        },
+        {
+          "page": 6,
+          "chunk": 5,
+          "score": 0.8166
+        },
+        {
+          "page": 5,
+          "chunk": 4,
+          "score": 0.816
+        },
+        {
+          "page": 24,
+          "chunk": 23,
+          "score": 0.8052
+        },
+        {
+          "page": 22,
+          "chunk": 21,
+          "score": 0.8043
+        },
+        {
+          "page": 16,
+          "chunk": 15,
+          "score": 0.803
+        }
+      ],
+      "stats": {
+        "questionChars": 24,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 456,
+        "searchMs": 164
+      },
+      "error": null
+    },
+    {
+      "id": 9,
+      "type": "term",
+      "text": "How does the % wildcard work with LIKE?",
+      "pages": [
+        6,
+        7
+      ],
+      "rank": 1,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 6,
+          "chunk": 5,
+          "score": 0.8471
+        },
+        {
+          "page": 7,
+          "chunk": 6,
+          "score": 0.8435
+        },
+        {
+          "page": 5,
+          "chunk": 4,
+          "score": 0.8059
+        },
+        {
+          "page": 8,
+          "chunk": 7,
+          "score": 0.8016
+        },
+        {
+          "page": 9,
+          "chunk": 8,
+          "score": 0.7997
+        },
+        {
+          "page": 28,
+          "chunk": 27,
+          "score": 0.7988
+        },
+        {
+          "page": 10,
+          "chunk": 9,
+          "score": 0.7986
+        },
+        {
+          "page": 14,
+          "chunk": 13,
+          "score": 0.797
+        },
+        {
+          "page": 24,
+          "chunk": 23,
+          "score": 0.7968
+        },
+        {
+          "page": 22,
+          "chunk": 21,
+          "score": 0.7967
+        }
+      ],
+      "stats": {
+        "questionChars": 39,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 446,
+        "searchMs": 124
+      },
+      "error": null
+    },
+    {
+      "id": 10,
+      "type": "term",
+      "text": "What is the range of TINYINT?",
+      "pages": [
+        2
+      ],
+      "rank": 1,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 2,
+          "chunk": 1,
+          "score": 0.8459
+        },
+        {
+          "page": 7,
+          "chunk": 6,
+          "score": 0.793
+        },
+        {
+          "page": 10,
+          "chunk": 9,
+          "score": 0.7875
+        },
+        {
+          "page": 6,
+          "chunk": 5,
+          "score": 0.7837
+        },
+        {
+          "page": 5,
+          "chunk": 4,
+          "score": 0.7828
+        },
+        {
+          "page": 8,
+          "chunk": 7,
+          "score": 0.7828
+        },
+        {
+          "page": 14,
+          "chunk": 13,
+          "score": 0.7813
+        },
+        {
+          "page": 1,
+          "chunk": 0,
+          "score": 0.7798
+        },
+        {
+          "page": 9,
+          "chunk": 8,
+          "score": 0.7761
+        },
+        {
+          "page": 4,
+          "chunk": 3,
+          "score": 0.7752
+        }
+      ],
+      "stats": {
+        "questionChars": 29,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 462,
+        "searchMs": 135
+      },
+      "error": null
+    },
+    {
+      "id": 11,
+      "type": "term",
+      "text": "What is a primary key?",
+      "pages": [
+        3,
+        4
+      ],
+      "rank": 2,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 1,
+          "chunk": 0,
+          "score": 0.8077
+        },
+        {
+          "page": 4,
+          "chunk": 3,
+          "score": 0.8047
+        },
+        {
+          "page": 3,
+          "chunk": 2,
+          "score": 0.7965
+        },
+        {
+          "page": 8,
+          "chunk": 7,
+          "score": 0.7953
+        },
+        {
+          "page": 9,
+          "chunk": 8,
+          "score": 0.7925
+        },
+        {
+          "page": 14,
+          "chunk": 13,
+          "score": 0.792
+        },
+        {
+          "page": 2,
+          "chunk": 1,
+          "score": 0.7918
+        },
+        {
+          "page": 5,
+          "chunk": 4,
+          "score": 0.7899
+        },
+        {
+          "page": 16,
+          "chunk": 15,
+          "score": 0.7889
+        },
+        {
+          "page": 7,
+          "chunk": 6,
+          "score": 0.7879
+        }
+      ],
+      "stats": {
+        "questionChars": 22,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 449,
+        "searchMs": 139
+      },
+      "error": null
+    },
+    {
+      "id": 12,
+      "type": "term",
+      "text": "Explain FULL OUTER JOIN",
+      "pages": [
+        18,
+        19
+      ],
+      "rank": 1,
+      "hitAt5": true,
+      "top": [
+        {
+          "page": 18,
+          "chunk": 17,
+          "score": 0.874
+        },
+        {
+          "page": 17,
+          "chunk": 16,
+          "score": 0.8652
+        },
+        {
+          "page": 19,
+          "chunk": 18,
+          "score": 0.8637
+        },
+        {
+          "page": 16,
+          "chunk": 15,
+          "score": 0.8536
+        },
+        {
+          "page": 26,
+          "chunk": 25,
+          "score": 0.8434
+        },
+        {
+          "page": 15,
+          "chunk": 14,
+          "score": 0.8421
+        },
+        {
+          "page": 25,
+          "chunk": 24,
+          "score": 0.8377
+        },
+        {
+          "page": 23,
+          "chunk": 22,
+          "score": 0.8348
+        },
+        {
+          "page": 24,
+          "chunk": 23,
+          "score": 0.8346
+        },
+        {
+          "page": 20,
+          "chunk": 19,
+          "score": 0.8288
+        }
+      ],
+      "stats": {
+        "questionChars": 23,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 470,
+        "searchMs": 136
+      },
+      "error": null
+    },
+    {
+      "id": 13,
+      "type": "none",
+      "text": "How do I bake a chocolate cake?",
+      "pages": [],
+      "rank": null,
+      "hitAt5": false,
+      "top": [
+        {
+          "page": 9,
+          "chunk": 8,
+          "score": 0.7523
+        },
+        {
+          "page": 8,
+          "chunk": 7,
+          "score": 0.7516
+        },
+        {
+          "page": 7,
+          "chunk": 6,
+          "score": 0.7483
+        },
+        {
+          "page": 5,
+          "chunk": 4,
+          "score": 0.7481
+        },
+        {
+          "page": 2,
+          "chunk": 1,
+          "score": 0.7459
+        },
+        {
+          "page": 6,
+          "chunk": 5,
+          "score": 0.7443
+        },
+        {
+          "page": 15,
+          "chunk": 14,
+          "score": 0.7431
+        },
+        {
+          "page": 10,
+          "chunk": 9,
+          "score": 0.7427
+        },
+        {
+          "page": 29,
+          "chunk": 28,
+          "score": 0.7417
+        },
+        {
+          "page": 13,
+          "chunk": 12,
+          "score": 0.7406
+        }
+      ],
+      "stats": {
+        "questionChars": 31,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 441,
+        "searchMs": 129
+      },
+      "error": null
+    },
+    {
+      "id": 14,
+      "type": "none",
+      "text": "How do I use window functions like ROW_NUMBER?",
+      "pages": [],
+      "rank": null,
+      "hitAt5": false,
+      "top": [
+        {
+          "page": 8,
+          "chunk": 7,
+          "score": 0.8144
+        },
+        {
+          "page": 7,
+          "chunk": 6,
+          "score": 0.813
+        },
+        {
+          "page": 9,
+          "chunk": 8,
+          "score": 0.8122
+        },
+        {
+          "page": 23,
+          "chunk": 22,
+          "score": 0.8077
+        },
+        {
+          "page": 6,
+          "chunk": 5,
+          "score": 0.8034
+        },
+        {
+          "page": 10,
+          "chunk": 9,
+          "score": 0.8009
+        },
+        {
+          "page": 5,
+          "chunk": 4,
+          "score": 0.8008
+        },
+        {
+          "page": 24,
+          "chunk": 23,
+          "score": 0.8005
+        },
+        {
+          "page": 28,
+          "chunk": 27,
+          "score": 0.7998
+        },
+        {
+          "page": 27,
+          "chunk": 26,
+          "score": 0.7995
+        }
+      ],
+      "stats": {
+        "questionChars": 46,
+        "candidates": 29,
+        "uniqueCandidates": 29,
+        "duplicatesDropped": 0,
+        "returned": 10,
+        "embedMs": 461,
+        "searchMs": 128
+      },
+      "error": null
+    }
+  ]
+}

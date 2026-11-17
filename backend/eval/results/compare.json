@@ -1,0 +1,1410 @@
+{
+  "ranAt": "2026-11-15T14:22:41.080Z",
+  "chatId": "6af9b6d398c23e1f7d52ec98",
+  "embeddingModel": "gemini-embedding-001:768",
+  "settings": {
+    "K": 5,
+    "CUTOFF": 10,
+    "fetchPerSearch": 20,
+    "rrfK": 60
+  },
+  "summary": {
+    "overall": {
+      "vector": {
+        "questions": 12,
+        "hitAt5": 11,
+        "hitAt10": 12,
+        "mrr": 0.75
+      },
+      "keyword": {
+        "questions": 12,
+        "hitAt5": 11,
+        "hitAt10": 12,
+        "mrr": 0.674
+      },
+      "hybrid": {
+        "questions": 12,
+        "hitAt5": 12,
+        "hitAt10": 12,
+        "mrr": 0.806
+      }
+    },
+    "meaning": {
+      "vector": {
+        "questions": 6,
+        "hitAt5": 5,
+        "hitAt10": 6,
+        "mrr": 0.583
+      },
+      "keyword": {
+        "questions": 6,
+        "hitAt5": 5,
+        "hitAt10": 6,
+        "mrr": 0.542
+      },
+      "hybrid": {
+        "questions": 6,
+        "hitAt5": 6,
+        "hitAt10": 6,
+        "mrr": 0.694
+      }
+    },
+    "term": {
+      "vector": {
+        "questions": 6,
+        "hitAt5": 6,
+        "hitAt10": 6,
+        "mrr": 0.917
+      },
+      "keyword": {
+        "questions": 6,
+        "hitAt5": 6,
+        "hitAt10": 6,
+        "mrr": 0.806
+      },
+      "hybrid": {
+        "questions": 6,
+        "hitAt5": 6,
+        "hitAt10": 6,
+        "mrr": 0.917
+      }
+    }
+  },
+  "winsLossesTies": {
+    "better": 2,
+    "worse": 0,
+    "same": 10
+  },
+  "results": [
+    {
+      "id": 1,
+      "type": "meaning",
+      "text": "Is SQL itself a database?",
+      "pages": [
+        1
+      ],
+      "ranks": {
+        "vector": 1,
+        "keyword": 2,
+        "hybrid": 1
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 1,
+            "score": 0.8576
+          },
+          {
+            "page": 3,
+            "score": 0.8321
+          },
+          {
+            "page": 10,
+            "score": 0.8295
+          },
+          {
+            "page": 12,
+            "score": 0.828
+          },
+          {
+            "page": 4,
+            "score": 0.8262
+          }
+        ],
+        "keyword": [
+          {
+            "page": 4,
+            "score": 1.9971
+          },
+          {
+            "page": 1,
+            "score": 1.7033
+          },
+          {
+            "page": 12,
+            "score": 1.3615
+          },
+          {
+            "page": 21,
+            "score": 1.3493
+          },
+          {
+            "page": 11,
+            "score": 1.1967
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 1,
+            "score": 0.0325
+          },
+          {
+            "page": 4,
+            "score": 0.0318
+          },
+          {
+            "page": 12,
+            "score": 0.0315
+          },
+          {
+            "page": 3,
+            "score": 0.0313
+          },
+          {
+            "page": 10,
+            "score": 0.0304
+          }
+        ]
+      },
+      "keywordCount": 16,
+      "stats": {
+        "questionChars": 25,
+        "vectorCount": 20,
+        "keywordCount": 16,
+        "hybridCount": 22,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 1029,
+        "vectorMs": 233,
+        "keywordMs": 507,
+        "totalMs": 1263,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 2,
+      "type": "meaning",
+      "text": "How do I make lookups on a column faster?",
+      "pages": [
+        4
+      ],
+      "ranks": {
+        "vector": 6,
+        "keyword": 4,
+        "hybrid": 3
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 28,
+            "score": 0.8092
+          },
+          {
+            "page": 29,
+            "score": 0.8072
+          },
+          {
+            "page": 27,
+            "score": 0.8064
+          },
+          {
+            "page": 2,
+            "score": 0.7992
+          },
+          {
+            "page": 21,
+            "score": 0.7969
+          }
+        ],
+        "keyword": [
+          {
+            "page": 15,
+            "score": 1.7413
+          },
+          {
+            "page": 26,
+            "score": 1.6385
+          },
+          {
+            "page": 27,
+            "score": 1.5215
+          },
+          {
+            "page": 4,
+            "score": 1.3746
+          },
+          {
+            "page": 13,
+            "score": 1.3367
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 27,
+            "score": 0.0317
+          },
+          {
+            "page": 28,
+            "score": 0.0313
+          },
+          {
+            "page": 4,
+            "score": 0.0308
+          },
+          {
+            "page": 21,
+            "score": 0.0301
+          },
+          {
+            "page": 16,
+            "score": 0.0299
+          }
+        ]
+      },
+      "keywordCount": 20,
+      "stats": {
+        "questionChars": 41,
+        "vectorCount": 20,
+        "keywordCount": 20,
+        "hybridCount": 23,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 878,
+        "vectorMs": 164,
+        "keywordMs": 214,
+        "totalMs": 1042,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 3,
+      "type": "meaning",
+      "text": "How do I undo changes if something fails midway in a transaction?",
+      "pages": [
+        13
+      ],
+      "ranks": {
+        "vector": 1,
+        "keyword": 1,
+        "hybrid": 1
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 13,
+            "score": 0.8481
+          },
+          {
+            "page": 14,
+            "score": 0.8243
+          },
+          {
+            "page": 12,
+            "score": 0.8058
+          },
+          {
+            "page": 3,
+            "score": 0.7972
+          },
+          {
+            "page": 10,
+            "score": 0.7862
+          }
+        ],
+        "keyword": [
+          {
+            "page": 13,
+            "score": 5.3407
+          },
+          {
+            "page": 12,
+            "score": 2.7919
+          },
+          {
+            "page": 14,
+            "score": 2.7559
+          },
+          {
+            "page": 15,
+            "score": 1.3728
+          },
+          {
+            "page": 26,
+            "score": 1.2763
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 13,
+            "score": 0.0328
+          },
+          {
+            "page": 14,
+            "score": 0.032
+          },
+          {
+            "page": 12,
+            "score": 0.032
+          },
+          {
+            "page": 3,
+            "score": 0.0308
+          },
+          {
+            "page": 16,
+            "score": 0.0286
+          }
+        ]
+      },
+      "keywordCount": 7,
+      "stats": {
+        "questionChars": 65,
+        "vectorCount": 20,
+        "keywordCount": 7,
+        "hybridCount": 21,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 550,
+        "vectorMs": 198,
+        "keywordMs": 125,
+        "totalMs": 748,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 4,
+      "type": "meaning",
+      "text": "How can I let a user read a table?",
+      "pages": [
+        11
+      ],
+      "ranks": {
+        "vector": 2,
+        "keyword": 1,
+        "hybrid": 1
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 3,
+            "score": 0.8238
+          },
+          {
+            "page": 11,
+            "score": 0.819
+          },
+          {
+            "page": 1,
+            "score": 0.8172
+          },
+          {
+            "page": 4,
+            "score": 0.8152
+          },
+          {
+            "page": 5,
+            "score": 0.8126
+          }
+        ],
+        "keyword": [
+          {
+            "page": 11,
+            "score": 2.6146
+          },
+          {
+            "page": 12,
+            "score": 2.2806
+          },
+          {
+            "page": 1,
+            "score": 2.0109
+          },
+          {
+            "page": 15,
+            "score": 1.5539
+          },
+          {
+            "page": 29,
+            "score": 0.8556
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 11,
+            "score": 0.0325
+          },
+          {
+            "page": 1,
+            "score": 0.0317
+          },
+          {
+            "page": 12,
+            "score": 0.0308
+          },
+          {
+            "page": 3,
+            "score": 0.0303
+          },
+          {
+            "page": 5,
+            "score": 0.0295
+          }
+        ]
+      },
+      "keywordCount": 20,
+      "stats": {
+        "questionChars": 34,
+        "vectorCount": 20,
+        "keywordCount": 20,
+        "hybridCount": 25,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 471,
+        "vectorMs": 161,
+        "keywordMs": 169,
+        "totalMs": 632,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 5,
+      "type": "meaning",
+      "text": "How do I list each employee with their manager's name?",
+      "pages": [
+        20,
+        21
+      ],
+      "ranks": {
+        "vector": 2,
+        "keyword": 3,
+        "hybrid": 2
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 22,
+            "score": 0.8296
+          },
+          {
+            "page": 21,
+            "score": 0.8248
+          },
+          {
+            "page": 23,
+            "score": 0.7984
+          },
+          {
+            "page": 16,
+            "score": 0.7975
+          },
+          {
+            "page": 25,
+            "score": 0.7948
+          }
+        ],
+        "keyword": [
+          {
+            "page": 22,
+            "score": 2.4373
+          },
+          {
+            "page": 9,
+            "score": 2.4238
+          },
+          {
+            "page": 21,
+            "score": 1.8815
+          },
+          {
+            "page": 7,
+            "score": 1.8426
+          },
+          {
+            "page": 3,
+            "score": 1.7106
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 22,
+            "score": 0.0328
+          },
+          {
+            "page": 21,
+            "score": 0.032
+          },
+          {
+            "page": 16,
+            "score": 0.0295
+          },
+          {
+            "page": 15,
+            "score": 0.0289
+          },
+          {
+            "page": 7,
+            "score": 0.0288
+          }
+        ]
+      },
+      "keywordCount": 20,
+      "stats": {
+        "questionChars": 54,
+        "vectorCount": 20,
+        "keywordCount": 20,
+        "hybridCount": 28,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 880,
+        "vectorMs": 156,
+        "keywordMs": 193,
+        "totalMs": 1036,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 6,
+      "type": "meaning",
+      "text": "How do I combine two queries and keep the duplicate rows?",
+      "pages": [
+        24,
+        25
+      ],
+      "ranks": {
+        "vector": 3,
+        "keyword": 6,
+        "hybrid": 3
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 26,
+            "score": 0.8637
+          },
+          {
+            "page": 23,
+            "score": 0.863
+          },
+          {
+            "page": 24,
+            "score": 0.8528
+          },
+          {
+            "page": 25,
+            "score": 0.8428
+          },
+          {
+            "page": 16,
+            "score": 0.8382
+          }
+        ],
+        "keyword": [
+          {
+            "page": 26,
+            "score": 4.3617
+          },
+          {
+            "page": 22,
+            "score": 2.9247
+          },
+          {
+            "page": 15,
+            "score": 2.8498
+          },
+          {
+            "page": 16,
+            "score": 2.7506
+          },
+          {
+            "page": 6,
+            "score": 1.8222
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 26,
+            "score": 0.0328
+          },
+          {
+            "page": 22,
+            "score": 0.0313
+          },
+          {
+            "page": 24,
+            "score": 0.031
+          },
+          {
+            "page": 16,
+            "score": 0.031
+          },
+          {
+            "page": 23,
+            "score": 0.0306
+          }
+        ]
+      },
+      "keywordCount": 20,
+      "stats": {
+        "questionChars": 57,
+        "vectorCount": 20,
+        "keywordCount": 20,
+        "hybridCount": 23,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 465,
+        "vectorMs": 68,
+        "keywordMs": 291,
+        "totalMs": 533,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 7,
+      "type": "term",
+      "text": "What does GROUP BY do?",
+      "pages": [
+        8,
+        9
+      ],
+      "ranks": {
+        "vector": 1,
+        "keyword": 3,
+        "hybrid": 1
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 9,
+            "score": 0.869
+          },
+          {
+            "page": 8,
+            "score": 0.838
+          },
+          {
+            "page": 10,
+            "score": 0.8221
+          },
+          {
+            "page": 1,
+            "score": 0.8063
+          },
+          {
+            "page": 14,
+            "score": 0.8062
+          }
+        ],
+        "keyword": [
+          {
+            "page": 10,
+            "score": 2.5672
+          },
+          {
+            "page": 1,
+            "score": 2.2864
+          },
+          {
+            "page": 9,
+            "score": 1.5938
+          },
+          {
+            "page": 26,
+            "score": 1.2763
+          },
+          {
+            "page": 16,
+            "score": 1.1702
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 9,
+            "score": 0.0323
+          },
+          {
+            "page": 10,
+            "score": 0.0323
+          },
+          {
+            "page": 1,
+            "score": 0.0318
+          },
+          {
+            "page": 8,
+            "score": 0.0313
+          },
+          {
+            "page": 14,
+            "score": 0.0299
+          }
+        ]
+      },
+      "keywordCount": 10,
+      "stats": {
+        "questionChars": 22,
+        "vectorCount": 20,
+        "keywordCount": 10,
+        "hybridCount": 20,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 494,
+        "vectorMs": 140,
+        "keywordMs": 155,
+        "totalMs": 635,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 8,
+      "type": "term",
+      "text": "What is HAVING used for?",
+      "pages": [
+        9
+      ],
+      "ranks": {
+        "vector": 1,
+        "keyword": 2,
+        "hybrid": 1
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 9,
+            "score": 0.8487
+          },
+          {
+            "page": 7,
+            "score": 0.8237
+          },
+          {
+            "page": 8,
+            "score": 0.8227
+          },
+          {
+            "page": 10,
+            "score": 0.8193
+          },
+          {
+            "page": 28,
+            "score": 0.8188
+          }
+        ],
+        "keyword": [
+          {
+            "page": 1,
+            "score": 2.421
+          },
+          {
+            "page": 9,
+            "score": 0.7778
+          },
+          {
+            "page": 27,
+            "score": 0.7597
+          },
+          {
+            "page": 6,
+            "score": 0.692
+          },
+          {
+            "page": 11,
+            "score": 0.6828
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 9,
+            "score": 0.0325
+          },
+          {
+            "page": 6,
+            "score": 0.0308
+          },
+          {
+            "page": 1,
+            "score": 0.0296
+          },
+          {
+            "page": 16,
+            "score": 0.0292
+          },
+          {
+            "page": 22,
+            "score": 0.0292
+          }
+        ]
+      },
+      "keywordCount": 20,
+      "stats": {
+        "questionChars": 24,
+        "vectorCount": 20,
+        "keywordCount": 20,
+        "hybridCount": 26,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 454,
+        "vectorMs": 131,
+        "keywordMs": 132,
+        "totalMs": 585,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 9,
+      "type": "term",
+      "text": "How does the % wildcard work with LIKE?",
+      "pages": [
+        6,
+        7
+      ],
+      "ranks": {
+        "vector": 1,
+        "keyword": 1,
+        "hybrid": 1
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 6,
+            "score": 0.8471
+          },
+          {
+            "page": 7,
+            "score": 0.8435
+          },
+          {
+            "page": 5,
+            "score": 0.8059
+          },
+          {
+            "page": 8,
+            "score": 0.8016
+          },
+          {
+            "page": 9,
+            "score": 0.7997
+          }
+        ],
+        "keyword": [
+          {
+            "page": 6,
+            "score": 2.9791
+          },
+          {
+            "page": 15,
+            "score": 1.3728
+          },
+          {
+            "page": 7,
+            "score": 1.3608
+          },
+          {
+            "page": 10,
+            "score": 1.3503
+          },
+          {
+            "page": 3,
+            "score": 1.0733
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 6,
+            "score": 0.0328
+          },
+          {
+            "page": 7,
+            "score": 0.032
+          },
+          {
+            "page": 10,
+            "score": 0.0306
+          },
+          {
+            "page": 24,
+            "score": 0.0296
+          },
+          {
+            "page": 3,
+            "score": 0.0279
+          }
+        ]
+      },
+      "keywordCount": 10,
+      "stats": {
+        "questionChars": 39,
+        "vectorCount": 20,
+        "keywordCount": 10,
+        "hybridCount": 22,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 448,
+        "vectorMs": 102,
+        "keywordMs": 130,
+        "totalMs": 550,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 10,
+      "type": "term",
+      "text": "What is the range of TINYINT?",
+      "pages": [
+        2
+      ],
+      "ranks": {
+        "vector": 1,
+        "keyword": 1,
+        "hybrid": 1
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 2,
+            "score": 0.8459
+          },
+          {
+            "page": 7,
+            "score": 0.793
+          },
+          {
+            "page": 10,
+            "score": 0.7875
+          },
+          {
+            "page": 6,
+            "score": 0.7837
+          },
+          {
+            "page": 5,
+            "score": 0.7828
+          }
+        ],
+        "keyword": [
+          {
+            "page": 2,
+            "score": 3.2424
+          },
+          {
+            "page": 1,
+            "score": 2.2864
+          },
+          {
+            "page": 7,
+            "score": 1.1387
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 2,
+            "score": 0.0328
+          },
+          {
+            "page": 7,
+            "score": 0.032
+          },
+          {
+            "page": 1,
+            "score": 0.0308
+          },
+          {
+            "page": 10,
+            "score": 0.0159
+          },
+          {
+            "page": 6,
+            "score": 0.0156
+          }
+        ]
+      },
+      "keywordCount": 3,
+      "stats": {
+        "questionChars": 29,
+        "vectorCount": 20,
+        "keywordCount": 3,
+        "hybridCount": 20,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 480,
+        "vectorMs": 142,
+        "keywordMs": 83,
+        "totalMs": 622,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 11,
+      "type": "term",
+      "text": "What is a primary key?",
+      "pages": [
+        3,
+        4
+      ],
+      "ranks": {
+        "vector": 2,
+        "keyword": 1,
+        "hybrid": 2
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 1,
+            "score": 0.8077
+          },
+          {
+            "page": 4,
+            "score": 0.8047
+          },
+          {
+            "page": 3,
+            "score": 0.7965
+          },
+          {
+            "page": 8,
+            "score": 0.7953
+          },
+          {
+            "page": 9,
+            "score": 0.7925
+          }
+        ],
+        "keyword": [
+          {
+            "page": 4,
+            "score": 2.4784
+          },
+          {
+            "page": 1,
+            "score": 2.2864
+          },
+          {
+            "page": 3,
+            "score": 2.0629
+          },
+          {
+            "page": 14,
+            "score": 1.0118
+          },
+          {
+            "page": 22,
+            "score": 0.9845
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 1,
+            "score": 0.0325
+          },
+          {
+            "page": 4,
+            "score": 0.0325
+          },
+          {
+            "page": 3,
+            "score": 0.0317
+          },
+          {
+            "page": 14,
+            "score": 0.0308
+          },
+          {
+            "page": 8,
+            "score": 0.0156
+          }
+        ]
+      },
+      "keywordCount": 5,
+      "stats": {
+        "questionChars": 22,
+        "vectorCount": 20,
+        "keywordCount": 5,
+        "hybridCount": 21,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 477,
+        "vectorMs": 157,
+        "keywordMs": 73,
+        "totalMs": 634,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 12,
+      "type": "term",
+      "text": "Explain FULL OUTER JOIN",
+      "pages": [
+        18,
+        19
+      ],
+      "ranks": {
+        "vector": 1,
+        "keyword": 1,
+        "hybrid": 1
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 18,
+            "score": 0.874
+          },
+          {
+            "page": 17,
+            "score": 0.8652
+          },
+          {
+            "page": 19,
+            "score": 0.8637
+          },
+          {
+            "page": 16,
+            "score": 0.8536
+          },
+          {
+            "page": 26,
+            "score": 0.8434
+          }
+        ],
+        "keyword": [
+          {
+            "page": 18,
+            "score": 3.3262
+          },
+          {
+            "page": 16,
+            "score": 2.8826
+          },
+          {
+            "page": 19,
+            "score": 2.1755
+          },
+          {
+            "page": 17,
+            "score": 1.7704
+          },
+          {
+            "page": 26,
+            "score": 1.6884
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 18,
+            "score": 0.0328
+          },
+          {
+            "page": 17,
+            "score": 0.0318
+          },
+          {
+            "page": 16,
+            "score": 0.0318
+          },
+          {
+            "page": 19,
+            "score": 0.0317
+          },
+          {
+            "page": 26,
+            "score": 0.0308
+          }
+        ]
+      },
+      "keywordCount": 14,
+      "stats": {
+        "questionChars": 23,
+        "vectorCount": 20,
+        "keywordCount": 14,
+        "hybridCount": 20,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 463,
+        "vectorMs": 133,
+        "keywordMs": 123,
+        "totalMs": 596,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 13,
+      "type": "none",
+      "text": "How do I bake a chocolate cake?",
+      "pages": [],
+      "ranks": {
+        "vector": null,
+        "keyword": null,
+        "hybrid": null
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 9,
+            "score": 0.7523
+          },
+          {
+            "page": 8,
+            "score": 0.7516
+          },
+          {
+            "page": 7,
+            "score": 0.7483
+          },
+          {
+            "page": 5,
+            "score": 0.7481
+          },
+          {
+            "page": 2,
+            "score": 0.7459
+          }
+        ],
+        "keyword": [
+          {
+            "page": 15,
+            "score": 1.3728
+          },
+          {
+            "page": 26,
+            "score": 1.2763
+          },
+          {
+            "page": 16,
+            "score": 1.1702
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 15,
+            "score": 0.0313
+          },
+          {
+            "page": 16,
+            "score": 0.0298
+          },
+          {
+            "page": 9,
+            "score": 0.0164
+          },
+          {
+            "page": 8,
+            "score": 0.0161
+          },
+          {
+            "page": 26,
+            "score": 0.0161
+          }
+        ]
+      },
+      "keywordCount": 3,
+      "stats": {
+        "questionChars": 31,
+        "vectorCount": 20,
+        "keywordCount": 3,
+        "hybridCount": 21,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 468,
+        "vectorMs": 146,
+        "keywordMs": 75,
+        "totalMs": 614,
+        "keywordError": null
+      },
+      "error": null
+    },
+    {
+      "id": 14,
+      "type": "none",
+      "text": "How do I use window functions like ROW_NUMBER?",
+      "pages": [],
+      "ranks": {
+        "vector": null,
+        "keyword": null,
+        "hybrid": null
+      },
+      "top": {
+        "vector": [
+          {
+            "page": 8,
+            "score": 0.8144
+          },
+          {
+            "page": 7,
+            "score": 0.813
+          },
+          {
+            "page": 9,
+            "score": 0.8122
+          },
+          {
+            "page": 23,
+            "score": 0.8077
+          },
+          {
+            "page": 6,
+            "score": 0.8034
+          }
+        ],
+        "keyword": [
+          {
+            "page": 16,
+            "score": 2.1402
+          },
+          {
+            "page": 9,
+            "score": 2.0627
+          },
+          {
+            "page": 6,
+            "score": 1.7426
+          },
+          {
+            "page": 15,
+            "score": 1.4472
+          },
+          {
+            "page": 7,
+            "score": 1.4353
+          }
+        ],
+        "hybrid": [
+          {
+            "page": 9,
+            "score": 0.032
+          },
+          {
+            "page": 7,
+            "score": 0.0315
+          },
+          {
+            "page": 6,
+            "score": 0.0313
+          },
+          {
+            "page": 16,
+            "score": 0.0299
+          },
+          {
+            "page": 24,
+            "score": 0.0299
+          }
+        ]
+      },
+      "keywordCount": 20,
+      "stats": {
+        "questionChars": 46,
+        "vectorCount": 20,
+        "keywordCount": 20,
+        "hybridCount": 26,
+        "vectorDuplicatesDropped": 0,
+        "keywordDuplicatesDropped": 0,
+        "embedMs": 455,
+        "vectorMs": 123,
+        "keywordMs": 171,
+        "totalMs": 578,
+        "keywordError": null
+      },
+      "error": null
+    }
+  ]
+}

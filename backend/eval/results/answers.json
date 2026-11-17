@@ -1,0 +1,1001 @@
+{
+  "ranAt": "2026-11-15T15:24:50.419Z",
+  "chatId": "6af9b6d398c23e1f7d52ec98",
+  "conditions": {
+    "answerModel": "openai/gpt-oss-120b (Groq)",
+    "temperature": 0,
+    "maxTokens": 1024,
+    "retrieval": "hybrid, top 5 chunks",
+    "embeddingModel": "gemini-embedding-001:768",
+    "pauseMs": 20000
+  },
+  "summary": {
+    "answerable": {
+      "questions": 12,
+      "citedRightPage": 11,
+      "retrievedRightPage": 12,
+      "refusedWrongly": 1,
+      "uncited": 0
+    },
+    "notInPdf": {
+      "questions": 2,
+      "correctRefusal": 2,
+      "citedAnything": 0
+    },
+    "invalidCitationsTotal": 0,
+    "reformattedCitationsTotal": 6,
+    "medianAnswerMs": 943
+  },
+  "results": [
+    {
+      "id": 1,
+      "type": "meaning",
+      "text": "Is SQL itself a database?",
+      "pages": [
+        1
+      ],
+      "answer": "SQL is not a database; it is a language used to interact with databases — it is a Structured Query Language for storing, manipulating, and retrieving data from an RDBMS, not a database itself[1].",
+      "citations": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 1
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 1
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 4
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 12
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 3
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 10
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 25,
+          "vectorCount": 20,
+          "keywordCount": 16,
+          "hybridCount": 22,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 639,
+          "vectorMs": 82,
+          "keywordMs": 464,
+          "totalMs": 722,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 1,
+        "uncited": false,
+        "answerMs": 1014
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 2,
+      "type": "meaning",
+      "text": "How do I make lookups on a column faster?",
+      "pages": [
+        4
+      ],
+      "answer": "Create an index on the column you query—indexes speed up data retrieval and make column lookups faster[3].",
+      "citations": [
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 4
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 27
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 28
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 4
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 21
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 16
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 41,
+          "vectorCount": 20,
+          "keywordCount": 20,
+          "hybridCount": 23,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 587,
+          "vectorMs": 115,
+          "keywordMs": 140,
+          "totalMs": 702,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 1,
+        "uncited": false,
+        "answerMs": 803
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 3,
+      "type": "meaning",
+      "text": "How do I undo changes if something fails midway in a transaction?",
+      "pages": [
+        13
+      ],
+      "answer": "Use the **ROLLBACK** command to undo all changes made in the current transaction when an error occurs. ROLLBACK reverts the database to the state it had before the transaction began, ensuring consistency [1].  \n\nIf you need to keep some earlier work while discarding only the part that failed, create a **SAVEPOINT** before the risky statements and, on error, issue **ROLLBACK TO savepoint_name**; the changes after the savepoint are undone while earlier updates remain [2].",
+      "citations": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 13
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 14
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 13
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 14
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 12
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 3
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 16
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 65,
+          "vectorCount": 20,
+          "keywordCount": 7,
+          "hybridCount": 21,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 598,
+          "vectorMs": 166,
+          "keywordMs": 91,
+          "totalMs": 764,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 1421
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 4,
+      "type": "meaning",
+      "text": "How can I let a user read a table?",
+      "pages": [
+        11
+      ],
+      "answer": "Use a DCL GRANT statement to give the user the SELECT privilege on the table, e.g.:\n\n```sql\nGRANT SELECT ON TableName TO UserName;\n```\n\nThis grants the user read access to the specified table [1][4].",
+      "citations": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 11
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 3
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 11
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 1
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 12
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 3
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 5
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 34,
+          "vectorCount": 20,
+          "keywordCount": 20,
+          "hybridCount": 25,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 786,
+          "vectorMs": 145,
+          "keywordMs": 203,
+          "totalMs": 931,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 1204
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 5,
+      "type": "meaning",
+      "text": "How do I list each employee with their manager's name?",
+      "pages": [
+        20,
+        21
+      ],
+      "answer": "Use a self‑join on the Employees table, joining the employee rows to the manager rows via the ManagerID and EmployeeID columns. For example:\n\n```sql\nSELECT e1.EmployeeName AS Employee,\n       e2.EmployeeName AS Manager\nFROM Employees AS e1\nJOIN Employees AS e2\n     ON e1.ManagerID = e2.EmployeeID;\n```\n\nThis query treats the table as two separate instances (e1 and e2) and returns each employee together with the name of their manager [2].",
+      "citations": [
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 21
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 22
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 21
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 16
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 15
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 7
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 54,
+          "vectorCount": 20,
+          "keywordCount": 20,
+          "hybridCount": 28,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 902,
+          "vectorMs": 152,
+          "keywordMs": 124,
+          "totalMs": 1054,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 1131
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 6,
+      "type": "meaning",
+      "text": "How do I combine two queries and keep the duplicate rows?",
+      "pages": [
+        24,
+        25
+      ],
+      "answer": "Use the **UNION ALL** set operator, which concatenates the result sets of the two SELECT queries without removing duplicate rows [3]",
+      "citations": [
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 24
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 26
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 22
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 24
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 16
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 23
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 57,
+          "vectorCount": 20,
+          "keywordCount": 20,
+          "hybridCount": 23,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 899,
+          "vectorMs": 150,
+          "keywordMs": 128,
+          "totalMs": 1050,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 871
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 7,
+      "type": "term",
+      "text": "What does GROUP BY do?",
+      "pages": [
+        8,
+        9
+      ],
+      "answer": "The GROUP BY clause groups rows from a table according to the values in one or more columns, creating separate groups that can be aggregated (e.g., with COUNT, SUM, AVG) and further filtered with HAVING [1][4].",
+      "citations": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 9
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 8
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 9
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 10
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 1
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 8
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 14
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 22,
+          "vectorCount": 20,
+          "keywordCount": 10,
+          "hybridCount": 20,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 570,
+          "vectorMs": 127,
+          "keywordMs": 158,
+          "totalMs": 699,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 1444
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 8,
+      "type": "term",
+      "text": "What is HAVING used for?",
+      "pages": [
+        9
+      ],
+      "answer": "The HAVING clause is used together with GROUP BY to filter groups based on the results of aggregate functions; it works like a WHERE clause but operates on the grouped data rather than individual rows[1].",
+      "citations": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 9
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 9
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 6
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 1
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 16
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 22
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 24,
+          "vectorCount": 20,
+          "keywordCount": 20,
+          "hybridCount": 26,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 564,
+          "vectorMs": 142,
+          "keywordMs": 135,
+          "totalMs": 707,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 1,
+        "uncited": false,
+        "answerMs": 799
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 9,
+      "type": "term",
+      "text": "How does the % wildcard work with LIKE?",
+      "pages": [
+        6,
+        7
+      ],
+      "answer": "The % wildcard in a LIKE condition stands for any sequence of characters—zero, one, or many. It lets you match patterns such as values that start with a given string (e.g., WHERE CustomerName LIKE 'a%'), end with a string (e.g., WHERE CustomerName LIKE '%a'), or contain a substring anywhere (e.g., WHERE CustomerName LIKE '%or%')[1].",
+      "citations": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 6
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 6
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 7
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 10
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 24
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 3
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 39,
+          "vectorCount": 20,
+          "keywordCount": 10,
+          "hybridCount": 22,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 561,
+          "vectorMs": 135,
+          "keywordMs": 138,
+          "totalMs": 696,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 1,
+        "uncited": false,
+        "answerMs": 1225
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 10,
+      "type": "term",
+      "text": "What is the range of TINYINT?",
+      "pages": [
+        2
+      ],
+      "answer": "TINYINT can store integer values from ‑128 to 127 [1]",
+      "citations": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 2
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 2
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 7
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 1
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 10
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 6
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 29,
+          "vectorCount": 20,
+          "keywordCount": 3,
+          "hybridCount": 20,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 948,
+          "vectorMs": 119,
+          "keywordMs": 101,
+          "totalMs": 1069,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 810
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 11,
+      "type": "term",
+      "text": "What is a primary key?",
+      "pages": [
+        3,
+        4
+      ],
+      "answer": "The document does not say this.",
+      "citations": [],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 1
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 4
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 3
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 14
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 8
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 22,
+          "vectorCount": 20,
+          "keywordCount": 5,
+          "hybridCount": 21,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 553,
+          "vectorMs": 134,
+          "keywordMs": 67,
+          "totalMs": 687,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": true,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 820
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": false,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 12,
+      "type": "term",
+      "text": "Explain FULL OUTER JOIN",
+      "pages": [
+        18,
+        19
+      ],
+      "answer": "A **FULL OUTER JOIN** returns every row from both tables involved in the join.  \n- Rows that satisfy the join condition appear together (e.g., Alice – Laptop, Bob – Headphones, Carol – Smartphone).  \n- If a row from the left table has no matching row in the right table, the columns from the right table are filled with **NULL** (e.g., a customer without an order).  \n- Conversely, if a row from the right table has no matching row in the left table, the columns from the left table are filled with **NULL** (e.g., an order without a customer).  \n\nThus the result set includes all matches plus all non‑matches from both sides, with NULLs marking the missing counterpart values[1][4].",
+      "citations": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 18
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 19
+        }
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 18
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 17
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 16
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 19
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 26
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 23,
+          "vectorCount": 20,
+          "keywordCount": 14,
+          "hybridCount": 20,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 886,
+          "vectorMs": 122,
+          "keywordMs": 136,
+          "totalMs": 1008,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": false,
+        "invalidCitations": 0,
+        "reformattedCitations": 2,
+        "uncited": false,
+        "answerMs": 1457
+      },
+      "retrievedRightPage": true,
+      "citedRightPage": true,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 13,
+      "type": "none",
+      "text": "How do I bake a chocolate cake?",
+      "pages": [],
+      "answer": "The document does not say this.",
+      "citations": [],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 15
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 16
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 9
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 8
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 26
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 31,
+          "vectorCount": 20,
+          "keywordCount": 3,
+          "hybridCount": 21,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 913,
+          "vectorMs": 145,
+          "keywordMs": 70,
+          "totalMs": 1058,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": true,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 631
+      },
+      "retrievedRightPage": false,
+      "citedRightPage": false,
+      "retried": false,
+      "error": null
+    },
+    {
+      "id": 14,
+      "type": "none",
+      "text": "How do I use window functions like ROW_NUMBER?",
+      "pages": [],
+      "answer": "The document does not say this.",
+      "citations": [],
+      "sources": [
+        {
+          "number": 1,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 9
+        },
+        {
+          "number": 2,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 7
+        },
+        {
+          "number": 3,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 6
+        },
+        {
+          "number": 4,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 16
+        },
+        {
+          "number": 5,
+          "fileName": "SQL Notes by Apna College (1).pdf",
+          "pageNumber": 24
+        }
+      ],
+      "stats": {
+        "retrieval": {
+          "questionChars": 46,
+          "vectorCount": 20,
+          "keywordCount": 20,
+          "hybridCount": 26,
+          "vectorDuplicatesDropped": 0,
+          "keywordDuplicatesDropped": 0,
+          "embedMs": 554,
+          "vectorMs": 104,
+          "keywordMs": 150,
+          "totalMs": 658,
+          "keywordError": null
+        },
+        "sourceCount": 5,
+        "skippedModel": false,
+        "notInDocument": true,
+        "invalidCitations": 0,
+        "reformattedCitations": 0,
+        "uncited": false,
+        "answerMs": 563
+      },
+      "retrievedRightPage": false,
+      "citedRightPage": false,
+      "retried": false,
+      "error": null
+    }
+  ]
+}
