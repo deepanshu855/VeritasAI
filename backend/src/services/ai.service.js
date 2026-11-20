@@ -21,7 +21,7 @@ const smallModel = new ChatGroq({
 });
 
 // Primary: retries a few times to ride out short rate-limit waits
-const bigModel = new ChatGroq({
+export const bigModel = new ChatGroq({
   model: "openai/gpt-oss-120b",
   apiKey: process.env.GROQ_API_KEY,
   temperature: 0,
@@ -61,7 +61,9 @@ const openrouter = process.env.OPENROUTER_API_KEY
     })
   : null;
 
-const fallbacks = [groqQwen, gemini, openrouter].filter(Boolean);
+export const fallbacks = [groqQwen, gemini, openrouter].filter(Boolean);
+// bigModel first; if it fails, the fallbacks are tried in order
+export const answerModel = bigModel.withFallbacks(fallbacks);
 
 const searchInternetTool = tool(tavilySearch, {
   name: "searchInternet",
@@ -173,7 +175,7 @@ export const answerFromSources = async ({ question, sources }) => {
     .map((s) => `[${s.number}] ${s.fileName}, page ${s.pageNumber}\n${s.text}`)
     .join("\n\n---\n\n");
 
-  const response = await bigModel.invoke([
+  const response = await answerModel.invoke([
     new SystemMessage(ANSWER_RULES),
     new HumanMessage(`SOURCES:\n\n${sourceBlock}\n\nQUESTION: ${question}`),
   ]);

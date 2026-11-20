@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "expected": "docs",
+    "got": "docs",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "docs",
+    "routerMs": 1367,
+    "text": "How do I make lookups on a column faster?"
+  },
+  {
+    "id": 2,
+    "expected": "docs",
+    "got": "docs",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "docs",
+    "routerMs": 454,
+    "text": "How do I undo changes if something fails midway in a transaction?"
+  },
+  {
+    "id": 3,
+    "expected": "docs",
+    "got": "docs",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "docs",
+    "routerMs": 484,
+    "text": "What does GROUP BY do?"
+  },
+  {
+    "id": 4,
+    "expected": "docs",
+    "got": "docs",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "docs",
+    "routerMs": 566,
+    "text": "What is HAVING used for?"
+  },
+  {
+    "id": 5,
+    "expected": "docs",
+    "got": "docs",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "docs",
+    "routerMs": 920,
+    "text": "What is the range of TINYINT?"
+  },
+  {
+    "id": 6,
+    "expected": "docs",
+    "got": "docs",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "docs",
+    "routerMs": 1123,
+    "text": "Explain FULL OUTER JOIN"
+  },
+  {
+    "id": 7,
+    "expected": "web",
+    "got": "web",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "web",
+    "routerMs": 1019,
+    "text": "What is the latest stable version of Node.js?"
+  },
+  {
+    "id": 8,
+    "expected": "web",
+    "got": "web",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "web",
+    "routerMs": 1054,
+    "text": "What is today's USD to INR exchange rate?"
+  },
+  {
+    "id": 9,
+    "expected": "web",
+    "got": "web",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "web",
+    "routerMs": 370,
+    "text": "Who won the most recent Formula 1 race?"
+  },
+  {
+    "id": 10,
+    "expected": "web",
+    "got": "web",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "web",
+    "routerMs": 1167,
+    "text": "What is the weather in Delhi today?"
+  },
+  {
+    "id": 11,
+    "expected": "web",
+    "got": "web",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "web",
+    "routerMs": 531,
+    "text": "What are the latest news headlines about the Indian cricket team?"
+  },
+  {
+    "id": 12,
+    "expected": "direct",
+    "got": "direct",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "direct",
+    "routerMs": 387,
+    "text": "Hi, how are you?"
+  },
+  {
+    "id": 13,
+    "expected": "direct",
+    "got": "direct",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "direct",
+    "routerMs": 721,
+    "text": "Thanks, that helps!"
+  },
+  {
+    "id": 14,
+    "expected": "direct",
+    "got": "direct",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "direct",
+    "routerMs": 940,
+    "text": "What is the capital of France?"
+  },
+  {
+    "id": 15,
+    "expected": "direct",
+    "got": "direct",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "direct",
+    "routerMs": 990,
+    "text": "Explain what a REST API is in simple words"
+  },
+  {
+    "id": 16,
+    "expected": "direct",
+    "got": "direct",
+    "ok": true,
+    "ambiguous": false,
+    "raw": "direct",
+    "routerMs": 3118,
+    "text": "How do I bake a chocolate cake?"
+  },
+  {
+    "id": 17,
+    "expected": "docs",
+    "got": "docs",
+    "ok": true,
+    "ambiguous": true,
+    "raw": "docs",
+    "routerMs": 3012,
+    "text": "What is a primary key?"
+  },
+  {
+    "id": 18,
+    "expected": "direct",
+    "got": "docs",
+    "ok": false,
+    "ambiguous": true,
+    "raw": "docs",
+    "routerMs": 1100,
+    "text": "How do I use window functions like ROW_NUMBER?"
+  }
+]
