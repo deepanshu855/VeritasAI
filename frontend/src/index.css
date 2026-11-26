@@ -1,35 +1,23 @@
 :root {
   color-scheme: dark;
   font-family:
-    Inter,
+    "Inter",
     system-ui,
     -apple-system,
     sans-serif;
-  background-color: #0b0b0f;
-  color: #e7e5e4;
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
+body {
+  margin: 0;
+  background: #07050f;
+  color: #fff;
 }
 
 button,
 input {
   font: inherit;
-  border: none;
-  background: transparent;
-}
-
-button {
-  cursor: pointer;
-  outline: none;
 }

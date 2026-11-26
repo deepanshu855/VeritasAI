@@ -1,361 +1,50 @@
-/* =========================================
-   Auth Pages (Login & Register)
-   ========================================= */
-
-.auth-bg {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
-.auth-content {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 2rem;
-}
-
-.auth-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  width: 100vw;
-  /* background-color: #0b0b0f; Matches dashboard background */
-  color: #e7e5e4;
-  font-family: Inter, system-ui, sans-serif;
-  padding: 24px;
-}
-
-.auth-page.centered {
-  flex-direction: column;
-}
-
-.auth-wrapper {
-  width: 100%;
-  max-width: 420px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: fadeIn 0.4s ease-out;
-}
-
-.auth-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  color: #fff;
-  margin-bottom: 32px;
-}
-
-.auth-card {
-  width: 100%;
-  background-color: #1c1c24; /* Matches dashboard card elements */
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 40px 32px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-}
-
-.auth-header {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.auth-heading {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-}
-
-.auth-subtitle {
-  font-size: 0.95rem;
-  color: #8a8a93;
-}
-
-.auth-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.label-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.auth-label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #e7e5e4;
-}
-
-.forgot-password-link {
-  font-size: 0.8rem;
-  color: #5b58f6;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.forgot-password-link:hover {
-  color: #7b78ff;
-  cursor: pointer;
-}
-
-.auth-input {
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
-  padding: 14px 16px;
-  border-radius: 12px;
-  font-size: 0.9375rem;
-  transition: all 0.2s ease;
-}
-
-.auth-input::placeholder {
-  color: #6c6c75;
-}
-
-.auth-input:focus {
-  outline: none;
-  border-color: #5b58f6;
-  background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 0 4px rgba(91, 88, 246, 0.1);
-}
-
-.auth-error {
-  background-color: rgba(255, 92, 92, 0.1);
-  border: 1px solid rgba(255, 92, 92, 0.2);
-  color: #ff5c5c;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  text-align: center;
-}
-
-.auth-button {
-  width: 100%;
-  background-color: #5b58f6;
-  color: #fff;
-  padding: 14px;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 500;
-  border: none;
-  margin-top: 8px;
-  transition: all 0.2s ease;
-}
-
-.auth-button:hover {
-  background-color: #4a47d6;
-  transform: translateY(-1px);
-}
-
-.auth-button:active {
-  transform: translateY(1px);
-}
-
-.auth-footer {
-  text-align: center;
-  margin-top: 24px;
-  font-size: 0.9rem;
-  color: #8a8a93;
-}
-
-.auth-link {
-  color: #5b58f6;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.auth-link:hover {
-  color: #7b78ff;
-  text-decoration: underline;
-}
-
-/* Reused Loading Indicator for Auth Pages */
-.loading-dots {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-
-.loading-dots span {
-  width: 8px;
-  height: 8px;
-  background-color: #8a8a93;
-  border-radius: 50%;
-  animation: typingWave 1.4s infinite ease-in-out both;
-}
-
-.loading-dots span:nth-child(1) {
-  animation-delay: -0.32s;
-}
-.loading-dots span:nth-child(2) {
-  animation-delay: -0.16s;
-}
-.loading-dots span:nth-child(3) {
-  animation-delay: 0s;
-}
-
-@keyframes typingWave {
-  0%,
-  80%,
-  100% {
-    transform: translateY(0) scale(0.8);
-    opacity: 0.5;
-    background-color: #8a8a93;
-  }
-  40% {
-    transform: translateY(-4px) scale(1.1);
-    opacity: 1;
-    background-color: #fff;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* =========================================
-   404 Page Specific Styles
-   ========================================= */
-.text-center-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 56px 40px;
-}
-
-.not-found-icon {
-  color: #5b58f6;
-  margin-bottom: 24px;
-  animation: fadeIn 0.4s ease-out;
-}
-
-.not-found-title {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin-bottom: 12px;
-}
-
-.redirect-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background-color: rgba(91, 88, 246, 0.08);
-  border: 1px solid rgba(91, 88, 246, 0.15);
-  padding: 12px 24px;
-  border-radius: 100px;
-  color: #e7e5e4;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-top: 16px;
-  animation: fadeIn 0.6s ease-out;
-}
-
-/* =========================================
-   Verify Email Specific Styles
-   ========================================= */
-.verify-icon {
-  margin-bottom: 24px;
-  animation: fadeIn 0.4s ease-out;
-}
-
-.verify-icon.success {
-  color: #10b981; /* Premium Emerald Green */
-}
-
-.verify-icon.error {
-  color: #ff5c5c; /* Premium Red */
-}
-
-.btn-link {
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-  margin-top: 16px;
-  box-sizing: border-box;
-}
-
-/* =========================================
-   Resend Verification Alert
-   ========================================= */
-.resend-alert {
-  background-color: rgba(245, 158, 11, 0.08); /* Soft Amber/Warning tint */
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  animation: fadeIn 0.3s ease-out;
-}
-
-.resend-text {
-  color: #fbbf24;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  margin: 0;
-  text-align: center;
-}
-
-.resend-button {
-  background: transparent;
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  color: #fbbf24;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  width: 100%;
-}
-
-.resend-button:hover {
-  background-color: rgba(245, 158, 11, 0.15);
-  border-color: rgba(245, 158, 11, 0.4);
-}
-
-.resend-button:active {
-  transform: translateY(1px);
-}
-
-/* Button Reset for Forgot Password */
-.btn-reset {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-}
+.vauth-page{min-height:100dvh;display:grid;place-items:center;padding:24px 16px;box-sizing:border-box;position:relative;z-index:1}
+.vauth-card{width:100%;max-width:420px;margin:0 auto;box-sizing:border-box;padding:40px;border-radius:20px;
+  background:linear-gradient(180deg,rgba(24,16,46,.78),rgba(12,8,26,.82));
+  -webkit-backdrop-filter:blur(24px) saturate(140%);backdrop-filter:blur(24px) saturate(140%);
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 24px 80px -12px rgba(0,0,0,.6),0 0 120px -30px rgba(168,85,247,.25);
+  animation:vauth-in .35s ease-out both}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.vauth-card{background:rgba(12,8,26,.94)}}
+.vauth-brand{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:24px;font-size:17px;font-weight:600;color:#fff;text-decoration:none}
+.vauth-title{margin:0 0 28px;text-align:center;font-size:24px;font-weight:600;letter-spacing:-.01em;color:#fff}
+.vauth-form{display:flex;flex-direction:column;gap:20px}
+.vauth-field{display:flex;flex-direction:column;gap:8px}
+.vauth-label-row{display:flex;justify-content:space-between;align-items:baseline}
+.vauth-label{font-size:13px;font-weight:500;color:rgba(255,255,255,.72)}
+.vauth-link{font-size:13px;color:#C4A1FF;text-decoration:none;font-weight:500;background:none;border:0;padding:0;cursor:pointer}
+.vauth-link:hover{text-decoration:underline}
+.vauth-input-wrap{position:relative}
+.vauth-input{width:100%;height:48px;box-sizing:border-box;padding:0 16px;border-radius:12px;font:inherit;font-size:15px;color:#fff;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);outline:none;transition:border-color .15s,box-shadow .15s}
+.vauth-input::placeholder{color:rgba(255,255,255,.38)}
+.vauth-input:hover{border-color:rgba(255,255,255,.18)}
+.vauth-input:focus{border-color:#A855F7;box-shadow:0 0 0 4px rgba(168,85,247,.18)}
+.vauth-input--password{padding-right:52px}
+.vauth-input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #130d26 inset;-webkit-text-fill-color:#fff;caret-color:#fff}
+.vauth-eye{position:absolute;top:50%;right:6px;transform:translateY(-50%);width:36px;height:36px;display:grid;place-items:center;
+  background:none;border:0;border-radius:8px;color:rgba(255,255,255,.6);cursor:pointer}
+.vauth-eye:hover{color:#fff;background:rgba(255,255,255,.06)}
+.vauth-eye:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.vauth-button{width:100%;height:48px;margin-top:8px;border:0;border-radius:12px;font:inherit;font-size:15px;font-weight:600;color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,#A855F7 0%,#7C5CBF 100%);display:grid;place-items:center;text-decoration:none;
+  transition:filter .15s,transform .15s,box-shadow .15s}
+.vauth-button:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px);box-shadow:0 8px 24px -6px rgba(168,85,247,.55)}
+.vauth-button:active:not(:disabled){transform:translateY(0)}
+.vauth-button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.vauth-button:disabled{opacity:.6;cursor:not-allowed}
+.vauth-spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:vauth-spin .7s linear infinite}
+.vauth-error{margin:0;font-size:13px;color:#FF8A9B}
+.vauth-switch{margin:20px 0 0;text-align:center;font-size:13px;color:rgba(255,255,255,.6)}
+.vauth-resend{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.vauth-resend-text{margin:0;color:#fbbf24;font-size:13px;text-align:center}
+.vauth-resend-btn{background:transparent;border:1px solid rgba(245,158,11,.35);color:#fbbf24;padding:8px 12px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer}
+.vauth-center{text-align:center}
+.vauth-subtitle{margin:0 0 20px;font-size:14px;color:rgba(255,255,255,.72)}
+.vauth-verify-icon{display:flex;justify-content:center;margin-bottom:16px}
+.vauth-verify-icon--ok{color:#10b981}
+.vauth-verify-icon--err{color:#FF8A9B}
+@keyframes vauth-in{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}
+@keyframes vauth-spin{to{transform:rotate(360deg)}}
+@media (max-width:400px){.vauth-card{padding:28px}}
+@media (prefers-reduced-motion:reduce){.vauth-card,.vauth-spinner{animation:none}.vauth-button,.vauth-input{transition:none}}

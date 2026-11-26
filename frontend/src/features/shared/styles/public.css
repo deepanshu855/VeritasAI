@@ -1,0 +1,61 @@
+:root{--v-accent:#A855F7;--v-accent-soft:#C4A1FF;--v-muted:rgba(255,255,255,.62)}
+html.vpub-root,html.vpub-root body,html.vpub-root #root{height:100%;margin:0;overflow:hidden}
+.vpub-scrim{position:fixed;inset:0;z-index:0;pointer-events:none}
+.vpub-scrim--auth{background:radial-gradient(ellipse 560px 600px at 72% 52%,rgba(7,5,15,.6),transparent 70%),linear-gradient(90deg,rgba(7,5,15,.5) 0%,transparent 55%)}
+.vpub-scrim--landing{background:linear-gradient(to top,rgba(7,5,15,.7) 0%,transparent 55%)}
+.vpub-shell{position:relative;z-index:1;height:100dvh;min-height:0;display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.vpub-shell::-webkit-scrollbar{display:none}
+.vpub-nav{flex:none;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,40px)}
+.vpub-brand{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#fff;text-decoration:none}
+.vbrand{display:inline-flex;align-items:center;gap:10px;font-size:17px;font-weight:600;color:#fff}
+.vbrand-mark{display:block;flex:none;object-fit:contain;border-radius:22%}
+.vpub-nav-right{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--v-muted)}
+.vpub-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 24px;border:0;border-radius:999px;font:inherit;font-size:15px;font-weight:600;color:#1a1033;text-decoration:none;cursor:pointer;background:linear-gradient(135deg,#F1EAFF 0%,#B79CFF 100%);box-shadow:0 8px 28px -8px rgba(168,85,247,.55);transition:filter .15s,transform .15s}
+.vpub-button--sm{height:40px;padding:0 20px;font-size:14px;gap:8px}
+.vpub-button:hover:not(:disabled){filter:brightness(1.05);transform:translateY(-1px)}
+.vpub-button:active:not(:disabled){transform:none}
+.vpub-button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.vpub-button:disabled{opacity:.6;cursor:not-allowed}
+.vland{flex:1;min-height:0;display:flex;align-items:flex-end;padding:0 clamp(16px,4vw,40px) clamp(32px,8vh,72px)}
+.vland-content{max-width:560px;animation:vpub-rise .5s ease-out both}
+.vland-title{margin:0 0 20px;font-size:clamp(2.25rem,5vw,3.5rem);line-height:1.05;font-weight:600;letter-spacing:-.025em}
+.vland-sub{margin:0 0 32px;max-width:480px;font-size:1.1rem;line-height:1.55;color:var(--v-muted)}
+.vauth-page{flex:1;min-height:0;width:100%;max-width:1200px;margin:0 auto;box-sizing:border-box;padding:0 clamp(16px,5vw,64px) 24px;display:grid;grid-template-columns:minmax(0,1fr) 420px;align-items:center;gap:64px}
+.vauth-aside{animation:vpub-rise .5s ease-out both}
+.vauth-headline{margin:0 0 16px;font-size:clamp(2.5rem,4.6vw,3.75rem);line-height:1.04;font-weight:600;letter-spacing:-.025em}
+.vauth-headline em{font-style:normal;color:var(--v-accent-soft)}
+.vauth-sub{margin:0;max-width:360px;font-size:1.05rem;line-height:1.55;color:var(--v-muted)}
+.vauth-card{width:100%;box-sizing:border-box;padding:36px;border-radius:24px;border:1px solid rgba(255,255,255,.12);
+  background:radial-gradient(120% 80% at 0% 0%,rgba(255,255,255,.10),transparent 55%),linear-gradient(180deg,rgba(28,19,54,.78),rgba(12,8,26,.84));
+  -webkit-backdrop-filter:blur(24px) saturate(140%);backdrop-filter:blur(24px) saturate(140%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 24px 80px -12px rgba(0,0,0,.6),0 0 120px -30px rgba(168,85,247,.3);
+  animation:vpub-rise .5s .08s ease-out both}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.vauth-card{background:rgba(12,8,26,.94)}}
+.vauth-title{margin:0 0 28px;text-align:center;font-size:22px;font-weight:600}
+.vauth-form{display:flex;flex-direction:column;gap:16px}
+.vauth-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.vauth-input-wrap{position:relative}
+.vauth-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:rgba(255,255,255,.45);pointer-events:none;transition:color .15s}
+.vauth-input-wrap:focus-within .vauth-icon{color:var(--v-accent-soft)}
+.vauth-input{width:100%;height:52px;box-sizing:border-box;padding:0 16px 0 46px;border-radius:14px;font:inherit;font-size:15px;color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);outline:none;transition:border-color .15s,box-shadow .15s}
+.vauth-input::placeholder{color:rgba(255,255,255,.4)}
+.vauth-input:hover{border-color:rgba(255,255,255,.18)}
+.vauth-input:focus{border-color:var(--v-accent);box-shadow:0 0 0 4px rgba(168,85,247,.18)}
+.vauth-input--password{padding-right:52px}
+.vauth-input:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #130d26 inset;-webkit-text-fill-color:#fff;caret-color:#fff}
+.vauth-eye{position:absolute;top:50%;right:8px;transform:translateY(-50%);width:36px;height:36px;display:grid;place-items:center;background:none;border:0;border-radius:8px;color:rgba(255,255,255,.55);cursor:pointer}
+.vauth-eye:hover{color:#fff;background:rgba(255,255,255,.06)}
+.vauth-eye:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.vauth-link{font-size:13px;font-weight:500;color:var(--v-accent-soft);text-decoration:none}
+.vauth-link:hover{text-decoration:underline}
+.vauth-forgot{align-self:flex-end;margin-top:-4px}
+.vauth-button{width:100%;margin-top:8px;height:52px}
+.vauth-spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(26,16,51,.25);border-top-color:#1a1033;animation:vpub-spin .7s linear infinite}
+.vauth-error{margin:0;font-size:13px;color:#FF8A9B}
+.vauth-switch{margin:24px 0 0;text-align:center;font-size:13px;color:var(--v-muted)}
+@keyframes vpub-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes vpub-spin{to{transform:rotate(360deg)}}
+@media (max-width:960px){.vauth-page{grid-template-columns:minmax(0,420px);justify-content:center;gap:0}.vauth-aside{display:none}}
+@media (max-width:560px){.vpub-hint{display:none}}
+@media (max-width:400px){.vauth-card{padding:24px}}
+@media (prefers-reduced-motion:reduce){.vland-content,.vauth-aside,.vauth-card,.vauth-spinner{animation:none}.vpub-button,.vauth-input{transition:none}}

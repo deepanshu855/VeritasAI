@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import "../styles/auth.css";
 import { useAuth } from "../hooks/useAuth";
+import PasswordInput from "./PasswordInput.jsx";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
@@ -17,47 +17,41 @@ const ResetPassword = () => {
   };
 
   return (
-    <section className="auth-page">
-      <div className="auth-wrapper">
-        <div className="auth-brand">VERITAS-AI</div>
-
-        <div className="auth-card">
-          <div className="auth-header">
-            <h1 className="auth-heading">Reset Password</h1>
-            <p className="auth-subtitle">
-              Enter your new password to update your account.
-            </p>
-          </div>
-
-          <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="input-group">
-              <label className="auth-label" htmlFor="password">
-                New Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                className="auth-input"
-                placeholder="Enter new password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-
-            <button className="auth-button" type="submit">
-              Update Password
-            </button>
-          </form>
-
-          <p className="auth-footer">
-            <Link to="/login" className="auth-link">
-              Back to Login
-            </Link>
-          </p>
-        </div>
+    <main className="vauth-page">
+      <div className="vauth-aside">
+        <h1 className="vauth-headline">
+          Reset your
+          <br />
+          <em>password</em>
+        </h1>
+        <p className="vauth-sub">Enter a new password to secure your account.</p>
       </div>
-    </section>
+
+      <section className="vauth-card">
+        <h2 className="vauth-title">Reset password</h2>
+
+        <form className="vauth-form" onSubmit={handleSubmit}>
+          <PasswordInput
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="New password"
+            required
+            autoComplete="new-password"
+          />
+
+          <button className="vpub-button vauth-button" type="submit">
+            Update password
+          </button>
+        </form>
+
+        <p className="vauth-switch">
+          <Link className="vauth-link" to="/login">
+            Back to Log in
+          </Link>
+        </p>
+      </section>
+    </main>
   );
 };
 

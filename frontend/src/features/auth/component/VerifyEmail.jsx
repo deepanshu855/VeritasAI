@@ -3,7 +3,6 @@ import { useSearchParams, Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useSelector } from "react-redux";
 import { CheckCircle, XCircle } from "lucide-react";
-import "../styles/auth.css";
 
 const VerifyEmail = () => {
   const [searchParams] = useSearchParams();
@@ -34,13 +33,19 @@ const VerifyEmail = () => {
 
   if (loading) {
     return (
-      <section className="auth-page centered">
-        <div className="loading-dots">
-          <span></span>
-          <span></span>
-          <span></span>
+      <main className="vauth-page">
+        <div className="vauth-aside">
+          <h1 className="vauth-headline">
+            Verify your
+            <br />
+            <em>email</em>
+          </h1>
+          <p className="vauth-sub">Confirming your account details.</p>
         </div>
-      </section>
+        <section className="vauth-card" style={{ display: "grid", placeItems: "center" }}>
+          <span className="vauth-spinner" aria-label="Verifying email" />
+        </section>
+      </main>
     );
   }
 
@@ -49,39 +54,36 @@ const VerifyEmail = () => {
   }
 
   return (
-    <section className="auth-page">
-      <div className="auth-wrapper">
-        <div className="auth-brand">VERITAS-AI</div>
-
-        <div className="auth-card text-center-card">
-          {result.success ? (
-            <>
-              <div className="verify-icon success">
-                <CheckCircle size={56} strokeWidth={1.5} />
-              </div>
-              <div className="auth-header">
-                <h1 className="auth-heading">Email Verified</h1>
-                <p className="auth-subtitle">{result.message}</p>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="verify-icon error">
-                <XCircle size={56} strokeWidth={1.5} />
-              </div>
-              <div className="auth-header">
-                <h1 className="auth-heading">Verification Failed</h1>
-                <p className="auth-subtitle">{result.message}</p>
-              </div>
-            </>
-          )}
-
-          <Link to="/login" className="auth-button btn-link">
-            Go to Login
-          </Link>
-        </div>
+    <main className="vauth-page">
+      <div className="vauth-aside">
+        <h1 className="vauth-headline">
+          Verify your
+          <br />
+          <em>email</em>
+        </h1>
+        <p className="vauth-sub">Confirming your account details.</p>
       </div>
-    </section>
+
+      <section className="vauth-card" style={{ textAlign: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}>
+          {result.success ? (
+            <CheckCircle size={48} strokeWidth={1.5} color="#10b981" />
+          ) : (
+            <XCircle size={48} strokeWidth={1.5} color="#FF8A9B" />
+          )}
+        </div>
+        <h2 className="vauth-title">
+          {result.success ? "Email verified" : "Verification failed"}
+        </h2>
+        <p className="vauth-sub" style={{ margin: "0 auto 24px" }}>
+          {result.message}
+        </p>
+
+        <Link to="/login" className="vpub-button vauth-button">
+          Go to Log in
+        </Link>
+      </section>
+    </main>
   );
 };
 

@@ -2,20 +2,19 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth.js";
-import "../styles/auth.css";
-import ShapeGrid from "../../shared/background/ShapeGrid.jsx";
-// Assuming you have toast imported somewhere globally or at the top
-import { toast } from "react-hot-toast"; // Adjust based on your toast library
+import PasswordInput from "../component/PasswordInput.jsx";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showResend, setShowResend] = useState(false);
-  const [userEmail, setUserEmail] = useState(""); // Added missing state
+  const [userEmail, setUserEmail] = useState("");
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
+  const error = useSelector((state) => state.auth.error);
 
   const { handleLogin, handleForgotPassword, handleResendVerifyEmail } = useAuth();
 
@@ -23,29 +22,17 @@ const Login = () => {
     return <Navigate to="/dashboard" />;
   }
 
-  if (loading) {
-    return (
-      <section className="auth-page centered">
-        <div className="loading-dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </section>
-    );
-  }
-
   const submitForm = async (event) => {
     event.preventDefault();
     try {
-      setShowResend(false); // Reset state on new attempt
+      setShowResend(false);
       const payload = { email, password };
 
       await handleLogin(payload);
 
       navigate("/dashboard");
-    } catch (error) {
-      const data = error.response?.data;
+    } catch (err) {
+      const data = err.response?.data;
 
       if (data?.code === "EMAIL_NOT_VERIFIED") {
         setShowResend(true);
@@ -63,105 +50,133 @@ const Login = () => {
 
     if (result.success) {
       toast.success(result.message);
-      setShowResend(false); // Optionally hide after success
+      setShowResend(false);
     } else {
       toast.error(result.message);
     }
   };
 
   return (
-    <div className="auth-bg">
-      <ShapeGrid
-        speed={0.6}
-        squareSize={40}
-        direction="up" // Removed duplicate direction prop
-        borderColor="#2F293A"
-        hoverFillColor="#222"
-        hoverTrailAmount={0}
-        hoverColor="#222222"
-        size={40}
-        shape="square" // Removed duplicate shape prop
-      />
+    <main className="vauth-page">
+      <div className="vauth-aside">
+        <h1 className="vauth-headline">
+          Welcome
+          <br />
+          <em>back</em>
+        </h1>
+        <p className="vauth-sub">Pick up where you left off.</p>
+      </div>
 
-      {/* Position absolute overlay to ensure it sits on top of ShapeGrid */}
-      <section className="auth-content auth-page">
-        <div className="auth-wrapper">
-          <div className="auth-brand">VERITAS-AI</div>
+      <section className="vauth-card">
+        <h2 className="vauth-title">Log in</h2>
 
-          <div className="auth-card">
-            <div className="auth-header">
-              <h1 className="auth-heading">Welcome Back</h1>
-              <p className="auth-subtitle">
-                Sign in with your email and password.
+        <form className="vauth-form" onSubmit={submitForm}>
+          <div className="vauth-input-wrap">
+            <label className="vauth-sr" htmlFor="email">
+              Email
+            </label>
+            <svg
+              className="vauth-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <input
+              id="email"
+              className="vauth-input"
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="Email"
+              required
+              autoComplete="email"
+            />
+          </div>
+
+          <PasswordInput
+            id="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder="Password"
+            required
+            autoComplete="current-password"
+          />
+
+          <button
+            type="button"
+            onClick={forgotPasswordHandler}
+            className="vauth-link vauth-forgot"
+            style={{ background: "none", border: 0, padding: 0, cursor: "pointer" }}
+          >
+            Forgot password?
+          </button>
+
+          {error && (
+            <p className="vauth-error" role="alert">
+              {error}
+            </p>
+          )}
+
+          {showResend && (
+            <div role="status">
+              <p className="vauth-error" style={{ color: "#fbbf24" }}>
+                Your email address has not been verified yet.{" "}
+                <button
+                  type="button"
+                  onClick={handleResend}
+                  className="vauth-link"
+                  style={{ background: "none", border: 0, padding: 0, cursor: "pointer" }}
+                >
+                  Resend verification email
+                </button>
               </p>
             </div>
+          )}
 
-            <form onSubmit={submitForm} className="auth-form">
-              <div className="input-group">
-                <label htmlFor="email" className="auth-label">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  placeholder="you@example.com"
-                  required
-                  className="auth-input"
-                />
-              </div>
+          <button
+            type="submit"
+            className="vpub-button vauth-button"
+            disabled={loading}
+          >
+            {loading ? (
+              <span className="vauth-spinner" />
+            ) : (
+              <>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+                Log in
+              </>
+            )}
+          </button>
+        </form>
 
-              <div className="input-group">
-                <div className="label-row">
-                  <label htmlFor="password" className="auth-label">
-                    Password
-                  </label>
-                  {/* Changed from div to button for semantic correctness & onClick handling */}
-                  <button
-                    type="button"
-                    onClick={forgotPasswordHandler}
-                    className="forgot-password-link btn-reset"
-                  >
-                    Forgot password?
-                  </button>
-                </div>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  placeholder="Enter your password"
-                  required
-                  className="auth-input"
-                />
-              </div>
-
-              {/* Dedicated UI for Resend Verification */}
-              {showResend && (
-                <div className="resend-alert">
-                  <p className="resend-text">Your email address has not been verified yet.</p>
-                  <button type="button" onClick={handleResend} className="resend-button">
-                    Resend Verification Email
-                  </button>
-                </div>
-              )}
-
-              <button type="submit" className="auth-button">
-                Login
-              </button>
-            </form>
-
-            <p className="auth-footer">
-              Don't have an account?{" "}
-              <Link to="/register" className="auth-link">
-                Register
-              </Link>
-            </p>
-          </div>
-        </div>
+        <p className="vauth-switch">
+          Don&apos;t have an account?{" "}
+          <Link className="vauth-link" to="/register">
+            Sign up
+          </Link>
+        </p>
       </section>
-    </div>
+    </main>
   );
 };
 

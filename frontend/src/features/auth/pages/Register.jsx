@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useSelector } from "react-redux";
-import "../styles/auth.css";
-import ShapeGrid from "../../shared/background/ShapeGrid.jsx";
+import PasswordInput from "../component/PasswordInput.jsx";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -12,23 +11,12 @@ const Register = () => {
 
   const loading = useSelector((state) => state.auth.loading);
   const user = useSelector((state) => state.auth.user);
+  const error = useSelector((state) => state.auth.error);
 
   const { handleRegister } = useAuth();
 
   if (user) {
     return <Navigate to="/dashboard" />;
-  }
-
-  if (loading) {
-    return (
-      <section className="auth-page centered">
-        <div className="loading-dots">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </section>
-    );
   }
 
   const submitForm = async (event) => {
@@ -44,94 +32,130 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-bg">
-      <ShapeGrid
-        speed={0.6}
-        squareSize={40}
-        direction="diagonal" // up, down, left, right, diagonal
-        borderColor="#2F293A"
-        hoverFillColor="#222"
-        shape="square" // square, hexagon, circle, triangle
-        hoverTrailAmount={0} // number of trailing hovered shapes (0 = no trail)
-        direction="up"
-        hoverColor="#222222"
-        size={40}
-        shape="square"
-      />
+    <main className="vauth-page">
+      <div className="vauth-aside">
+        <h1 className="vauth-headline">
+          Create your
+          <br />
+          <em>account</em>
+        </h1>
+        <p className="vauth-sub">Ask the web and your documents, with sources.</p>
+      </div>
 
-      <section className="auth-content auth-page">
-        <div className="auth-wrapper">
-          <div className="auth-brand">VERITAS-AI</div>
+      <section className="vauth-card">
+        <h2 className="vauth-title">Register</h2>
 
-          <div className="auth-card">
-            <div className="auth-header">
-              <h1 className="auth-heading">Create Account</h1>
-              <p className="auth-subtitle">
-                Register with your username, email, and password.
-              </p>
-            </div>
-
-            <form onSubmit={submitForm} className="auth-form">
-              <div className="input-group">
-                <label htmlFor="username" className="auth-label">
-                  Username
-                </label>
-                <input
-                  id="username"
-                  type="text"
-                  value={username}
-                  onChange={(event) => setUsername(event.target.value)}
-                  placeholder="Choose a username"
-                  required
-                  className="auth-input"
-                />
-              </div>
-
-              <div className="input-group">
-                <label htmlFor="email" className="auth-label">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  placeholder="you@example.com"
-                  required
-                  className="auth-input"
-                />
-              </div>
-
-              <div className="input-group">
-                <label htmlFor="password" className="auth-label">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  placeholder="Create a password"
-                  required
-                  className="auth-input"
-                />
-              </div>
-
-              <button type="submit" className="auth-button">
-                Register
-              </button>
-            </form>
-
-            <p className="auth-footer">
-              Already have an account?{" "}
-              <Link to="/login" className="auth-link">
-                Login
-              </Link>
-            </p>
+        <form className="vauth-form" onSubmit={submitForm}>
+          <div className="vauth-input-wrap">
+            <label className="vauth-sr" htmlFor="username">
+              Username
+            </label>
+            <svg
+              className="vauth-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <input
+              id="username"
+              className="vauth-input"
+              type="text"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              placeholder="Username"
+              required
+              autoComplete="username"
+            />
           </div>
-        </div>
+
+          <div className="vauth-input-wrap">
+            <label className="vauth-sr" htmlFor="email">
+              Email
+            </label>
+            <svg
+              className="vauth-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <input
+              id="email"
+              className="vauth-input"
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="Email"
+              required
+              autoComplete="email"
+            />
+          </div>
+
+          <PasswordInput
+            id="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder="Password"
+            required
+            autoComplete="new-password"
+          />
+
+          {error && (
+            <p className="vauth-error" role="alert">
+              {error}
+            </p>
+          )}
+
+          <button
+            type="submit"
+            className="vpub-button vauth-button"
+            disabled={loading}
+          >
+            {loading ? (
+              <span className="vauth-spinner" />
+            ) : (
+              <>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+                Create account
+              </>
+            )}
+          </button>
+        </form>
+
+        <p className="vauth-switch">
+          Already have an account?{" "}
+          <Link className="vauth-link" to="/login">
+            Log in
+          </Link>
+        </p>
       </section>
-    </div>
+    </main>
   );
 };
 
