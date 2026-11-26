@@ -19,7 +19,7 @@ const Login = () => {
   const { handleLogin, handleForgotPassword, handleResendVerifyEmail } = useAuth();
 
   if (user) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/chat" />;
   }
 
   const submitForm = async (event) => {
@@ -30,7 +30,7 @@ const Login = () => {
 
       await handleLogin(payload);
 
-      navigate("/dashboard");
+      navigate("/chat");
     } catch (err) {
       const data = err.response?.data;
 
@@ -149,6 +149,7 @@ const Login = () => {
               <span className="vauth-spinner" />
             ) : (
               <>
+                <span>Log in</span>
                 <svg
                   width="16"
                   height="16"
@@ -163,7 +164,6 @@ const Login = () => {
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
                 </svg>
-                Log in
               </>
             )}
           </button>

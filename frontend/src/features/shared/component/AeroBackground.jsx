@@ -17,6 +17,12 @@ const FALLBACK_STYLE = {
 };
 
 export default function AeroBackground({
+  placement = "full",
+  count = 1300,
+  dpr = 2,
+  speed = 1,
+  vignette = 0.3,
+  mouseStrength = 0.6,
   pulseOnClick = true,
   holdToGather = true,
 }) {
@@ -36,13 +42,16 @@ export default function AeroBackground({
       <AeroShards
         shardColor="#896ABD"
         accentColor="#A855F7"
-        placement="full"
+        placement={placement}
         material="glass"
         markers="plus"
-        count={1300}
+        count={count}
+        dpr={dpr}
+        speed={speed}
         depthOfField={0.75}
-        vignette={0.3}
+        vignette={vignette}
         mouseInteraction
+        mouseStrength={mouseStrength}
         pulseOnClick={pulseOnClick}
         holdToGather={holdToGather}
         onError={handleError}

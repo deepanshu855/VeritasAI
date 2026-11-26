@@ -16,7 +16,7 @@ const Register = () => {
   const { handleRegister } = useAuth();
 
   if (user) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/chat" />;
   }
 
   const submitForm = async (event) => {
@@ -128,6 +128,7 @@ const Register = () => {
               <span className="vauth-spinner" />
             ) : (
               <>
+                <span>Create account</span>
                 <svg
                   width="16"
                   height="16"
@@ -142,7 +143,6 @@ const Register = () => {
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
                 </svg>
-                Create account
               </>
             )}
           </button>

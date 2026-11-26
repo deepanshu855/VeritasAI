@@ -37,7 +37,7 @@ html.vpub-root,html.vpub-root body,html.vpub-root #root{height:100%;margin:0;ove
 .vauth-input-wrap{position:relative}
 .vauth-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:rgba(255,255,255,.45);pointer-events:none;transition:color .15s}
 .vauth-input-wrap:focus-within .vauth-icon{color:var(--v-accent-soft)}
-.vauth-input{width:100%;height:52px;box-sizing:border-box;padding:0 16px 0 46px;border-radius:14px;font:inherit;font-size:15px;color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);outline:none;transition:border-color .15s,box-shadow .15s}
+.vauth-input{width:100%;height:52px;box-sizing:border-box;padding:0 16px 0 48px;border-radius:14px;font:inherit;font-size:15px;color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);outline:none;transition:border-color .15s,box-shadow .15s}
 .vauth-input::placeholder{color:rgba(255,255,255,.4)}
 .vauth-input:hover{border-color:rgba(255,255,255,.18)}
 .vauth-input:focus{border-color:var(--v-accent);box-shadow:0 0 0 4px rgba(168,85,247,.18)}
@@ -49,7 +49,7 @@ html.vpub-root,html.vpub-root body,html.vpub-root #root{height:100%;margin:0;ove
 .vauth-link{font-size:13px;font-weight:500;color:var(--v-accent-soft);text-decoration:none}
 .vauth-link:hover{text-decoration:underline}
 .vauth-forgot{align-self:flex-end;margin-top:-4px}
-.vauth-button{width:100%;margin-top:8px;height:52px}
+.vauth-button{width:100%;margin-top:8px;height:52px;display:inline-flex;flex-direction:row;align-items:center;justify-content:center;gap:8px}
 .vauth-spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(26,16,51,.25);border-top-color:#1a1033;animation:vpub-spin .7s linear infinite}
 .vauth-error{margin:0;font-size:13px;color:#FF8A9B}
 .vauth-switch{margin:24px 0 0;text-align:center;font-size:13px;color:var(--v-muted)}

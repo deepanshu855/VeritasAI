@@ -1,16 +1,18 @@
 import axios from "axios";
 
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 const instance = axios.create({
-  baseURL: "http://localhost:3000/api/chats",
+  baseURL: `${API_BASE}/api/chats`,
   withCredentials: true,
 });
 
-export const sendMessage = async ({ message, chatId }) => {
-  const response = await instance.post("/", { message, chatId });
+export const sendMessage = async ({ message, chatId, fileIds = [] }) => {
+  const response = await instance.post("/", { message, chatId, fileIds });
   return response.data;
 };
 
-export const getChat = async () => {
+export const getChats = async () => {
   const response = await instance.get("/");
   return response.data;
 };
@@ -22,5 +24,17 @@ export const getMessages = async (chatId) => {
 
 export const deleteChat = async (chatId) => {
   const response = await instance.delete(`/delete/${chatId}`);
+  return response.data;
+};
+
+export const uploadFile = async ({ chatId, file }) => {
+  const formData = new FormData();
+  formData.append("file", file);
+  const response = await instance.post(`/${chatId}/files`, formData);
+  return response.data;
+};
+
+export const getFileStatus = async ({ chatId, fileId }) => {
+  const response = await instance.get(`/${chatId}/files/${fileId}`);
   return response.data;
 };

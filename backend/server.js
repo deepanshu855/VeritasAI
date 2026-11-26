@@ -9,6 +9,6 @@ const httpServer = http.createServer(app);
 initSocket(httpServer);
 connectToDb();
 connectToRedis(); // NEW
-httpServer.listen(8080, () => {
+httpServer.listen(3000, () => {
   console.log("Server running...");
 });

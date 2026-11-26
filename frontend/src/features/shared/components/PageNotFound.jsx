@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AlertCircle } from "lucide-react";
-import "../../auth/styles/auth.css";
 
 const PageNotFound = () => {
   const navigate = useNavigate();

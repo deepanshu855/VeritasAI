@@ -1,119 +1,154 @@
-import { initializeSocketConnection } from "../services/chat.socket";
+import { useCallback, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getMessages } from "../services/chat.api";
+import { cancelChatRun, sendChatMessage } from "../services/chat.socket";
 import {
-  sendMessage,
-  getChat,
-  getMessages,
-  deleteChat,
-} from "../services/chat.api.js";
-import {
-  setChats,
-  setError,
-  setCurrentChatId,
-  setLoading,
-  addMessages,
-  addNewMessages,
-  createNewChat,
-} from "../chat.slice.js";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+  clearError,
+  selectActiveChatId,
+  selectActiveMessages,
+  selectAttachments,
+  selectChatError,
+  selectIsChatLoaded,
+  selectIsLoadingMessages,
+  selectSocketStatus,
+  selectStreaming,
+  setActiveChatId,
+  setCancelling,
+  setLoadingMessages,
+  setMessagesForChat,
+  startRun,
+} from "../chat.slice";
 
-export const useChat = () => {
+const STAGE_LABELS = {
+  preparing: "Thinking",
+  routing: "Thinking",
+  searching_docs: "Reading your documents",
+  searching_web: "Searching the web",
+  writing: "Writing",
+};
+
+export function useChat(routeChatId = null) {
   const dispatch = useDispatch();
+  const activeChatId = useSelector(selectActiveChatId);
+  const messages = useSelector(selectActiveMessages);
+  const streaming = useSelector(selectStreaming);
+  const error = useSelector(selectChatError);
+  const attachments = useSelector(selectAttachments);
+  const socketStatus = useSelector(selectSocketStatus);
+  const isLoadingMessages = useSelector(selectIsLoadingMessages);
+  const isChatLoaded = useSelector(selectIsChatLoaded(routeChatId));
 
-  const handleSendMessage = async ({ message, chatId }) => {
-    dispatch(setLoading(true));
-    const data = await sendMessage({ message, chatId });
-    const { chat, aiResponse } = data;
-    if (!chatId) {
-      dispatch(
-        createNewChat({
-          chatId: chat._id,
-          title: chat.title,
-        }),
-      );
+  useEffect(() => {
+    const normalized = routeChatId || null;
+    if (activeChatId !== normalized) {
+      dispatch(setActiveChatId(normalized));
+      dispatch(clearError());
     }
-    dispatch(
-      addNewMessages({
-        chatId: chatId || chat._id,
-        content: message,
+  }, [routeChatId, activeChatId, dispatch]);
+
+  useEffect(() => {
+    if (!routeChatId || isChatLoaded) return;
+
+    let cancelled = false;
+    const load = async () => {
+      dispatch(setLoadingMessages(true));
+      try {
+        const data = await getMessages(routeChatId);
+        if (cancelled) return;
+        const formatted = (data.messages || []).map((m) => ({
+          id: m._id,
+          role: m.role,
+          content: m.content || "",
+          attachments: m.attachments || [],
+          citations: m.citations || [],
+        }));
+        dispatch(
+          setMessagesForChat({ chatId: routeChatId, messages: formatted }),
+        );
+      } catch (err) {
+        if (!cancelled) {
+          console.error("Failed to load messages:", err);
+        }
+      } finally {
+        if (!cancelled) {
+          dispatch(setLoadingMessages(false));
+        }
+      }
+    };
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [routeChatId, isChatLoaded, dispatch]);
+
+  const sendMessage = useCallback(
+    (rawText) => {
+      const text = (rawText ?? "").trim();
+      const readyFiles = attachments.filter((a) => a.status === "ready");
+      const hasBusyFiles = attachments.some(
+        (a) =>
+          a.status === "uploading" ||
+          a.status === "processing" ||
+          a.status === "failed",
+      );
+
+      if (streaming.status !== "idle") return false;
+      if (socketStatus !== "connected") return false;
+      if (hasBusyFiles) return false;
+      if (!text && readyFiles.length === 0) return false;
+
+      const fileIds = readyFiles.map((f) => f.fileId);
+      const userMessage = {
+        id: `user-${Date.now()}`,
         role: "user",
-      }),
-    );
-    dispatch(
-      addNewMessages({
-        chatId: chatId || chat._id,
-        content: aiResponse,
-        role: "ai",
-      }),
-    );
-    dispatch(setCurrentChatId(chatId || chat._id));
-    dispatch(setLoading(false));
-  };
+        content: text,
+        attachments: readyFiles.map((f) => ({
+          _id: f.fileId,
+          originalName: f.originalName,
+          mimeType: f.mimeType,
+          size: f.size,
+          status: f.status,
+        })),
+      };
 
-  const handleGetChats = async () => {
-    dispatch(setLoading(false));
-    const data = await getChat();
-    const { chats } = data;
-    dispatch(
-      setChats(
-        chats.reduce((acc, chat) => {
-          acc[chat._id] = {
-            id: chat._id,
-            title: chat.title,
-            messages: [],
-            lastUpdated: chat.updatedAt,
-          };
-          return acc;
-        }, {}),
-      ),
-    );
-    dispatch(setLoading(false));
-  };
-
-  const handleOpenChats = async (chatId, chats) => {
-    if (chats[chatId]?.messages.length === 0) {
-      dispatch(setLoading(true));
-      const data = await getMessages(chatId);
-      const { messages } = data;
-
-      const formattedMessages = messages.map((message) => ({
-        content: message.content,
-        role: message.role,
-      }));
-
-      dispatch(
-        addMessages({
-          chatId: chatId,
-          messages: formattedMessages,
-        }),
-      );
-      dispatch(setLoading(false));
-    }
-  };
-
-  const handleDeleteChats = async (chatId) => {
-    try {
-      dispatch(setLoading(true));
-      const response = await deleteChat(chatId);
-      toast.success("Chat deleted successfully", {
-        autoClose: 1000,
+      dispatch(startRun({ chatId: routeChatId || null, userMessage }));
+      sendChatMessage({
+        message: text,
+        chatId: routeChatId || undefined,
+        fileIds,
       });
-      await handleGetChats();
-    } catch (error) {
-      const errorMessage = error.response?.data?.message || "deletion failed";
-      toast.error(errorMessage, {
-        autoClose: 1000,
-      });
-    } finally {
-      dispatch(setLoading(false));
-    }
-  };
+      return true;
+    },
+    [attachments, streaming.status, socketStatus, routeChatId, dispatch],
+  );
+
+  const cancelRun = useCallback(() => {
+    if (streaming.status !== "running") return;
+    dispatch(setCancelling());
+    cancelChatRun();
+  }, [streaming.status, dispatch]);
+
+  const dismissError = useCallback(() => {
+    dispatch(clearError());
+  }, [dispatch]);
+
+  const isRunning = streaming.status !== "idle";
+  const stageLabel = streaming.stage
+    ? STAGE_LABELS[streaming.stage] || "Thinking"
+    : null;
 
   return {
-    initializeSocketConnection,
-    handleSendMessage,
-    handleGetChats,
-    handleOpenChats,
-    handleDeleteChats,
+    activeChatId,
+    messages,
+    streaming,
+    stageLabel,
+    isRunning,
+    error,
+    socketStatus,
+    isLoadingMessages,
+    sendMessage,
+    cancelRun,
+    dismissError,
   };
-};
+}

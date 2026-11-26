@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Register from "../features/auth/pages/Register";
 import Login from "../features/auth/pages/Login";
-import Dashboard from "../features/chat/pages/Dashboard";
+import ChatLayout from "../features/chat/pages/ChatLayout";
+import ChatPage from "../features/chat/pages/ChatPage";
 import Protected from "../features/auth/component/Protected";
 import Landing from "../features/landing/pages/Landing";
 import ResetPassword from "../features/auth/component/ResetPassword";
@@ -36,12 +37,22 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard",
+    path: "/chat",
     element: (
       <Protected>
-        <Dashboard />
+        <ChatLayout />
       </Protected>
     ),
+    children: [
+      {
+        index: true,
+        element: <ChatPage />,
+      },
+      {
+        path: ":chatId",
+        element: <ChatPage />,
+      },
+    ],
   },
   {
     path: "*",
