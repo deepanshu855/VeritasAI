@@ -1,0 +1,445 @@
+{
+  "date": "2026-11-25T10:21:00.999Z",
+  "conditions": "local Windows machine, Redis Cloud free plan (remote), Tavily free plan, default search depth, maxResults 5, TTL 3600 s, calls one at a time, single run",
+  "summary": {
+    "totalCalls": 46,
+    "hits": 25,
+    "misses": 21,
+    "errors": 0,
+    "expectedVsObservedMismatches": 0,
+    "tavilyCallsMade": 21,
+    "tavilyCallsSavedByCache": 25,
+    "redisKeysExpected": 21,
+    "redisKeysFound": 21,
+    "hitWallMs": {
+      "n": 25,
+      "min": 39,
+      "median": 55,
+      "p95": 77,
+      "max": 78
+    },
+    "missWallMs": {
+      "n": 21,
+      "min": 413,
+      "median": 1263,
+      "p95": 1737,
+      "max": 1840
+    }
+  },
+  "rows": [
+    {
+      "pass": 1,
+      "query": "what is the capital of australia",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 576,
+      "loggedMs": 574,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "who won the 2022 fifa world cup",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1694,
+      "loggedMs": 1694,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "how does a vector database work",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1278,
+      "loggedMs": 1278,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "latest stable version of node.js",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1696,
+      "loggedMs": 1695,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "what is retrieval augmented generation",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 417,
+      "loggedMs": 417,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "difference between sql and nosql databases",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1150,
+      "loggedMs": 1150,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "how to center a div in css",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1201,
+      "loggedMs": 1201,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "what is the speed of light in km per second",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1285,
+      "loggedMs": 1285,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "best practices for jwt authentication",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1737,
+      "loggedMs": 1737,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "what is cloud run in google cloud",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1213,
+      "loggedMs": 1213,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "how does redis caching work",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1501,
+      "loggedMs": 1501,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "what is the tallest building in the world",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1263,
+      "loggedMs": 1263,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "explain big o notation simply",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1136,
+      "loggedMs": 1136,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "what is docker compose used for",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1219,
+      "loggedMs": 1218,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "how many people live in india",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1390,
+      "loggedMs": 1390,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "what is the difference between tcp and udp",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1340,
+      "loggedMs": 1340,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "how to prevent sql injection",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1169,
+      "loggedMs": 1169,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "what is mongodb atlas search",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1274,
+      "loggedMs": 1273,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "what is a websocket",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1159,
+      "loggedMs": 1159,
+      "error": null
+    },
+    {
+      "pass": 1,
+      "query": "who wrote the book the pragmatic programmer",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 1840,
+      "loggedMs": 1840,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "what is the capital of australia",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 61,
+      "loggedMs": 61,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "who won the 2022 fifa world cup",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 69,
+      "loggedMs": 69,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "how does a vector database work",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 60,
+      "loggedMs": 60,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "latest stable version of node.js",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 54,
+      "loggedMs": 54,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "what is retrieval augmented generation",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 58,
+      "loggedMs": 58,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "difference between sql and nosql databases",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 56,
+      "loggedMs": 55,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "how to center a div in css",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 40,
+      "loggedMs": 40,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "what is the speed of light in km per second",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 70,
+      "loggedMs": 70,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "best practices for jwt authentication",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 58,
+      "loggedMs": 58,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "what is cloud run in google cloud",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 55,
+      "loggedMs": 54,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "how does redis caching work",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 66,
+      "loggedMs": 66,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "what is the tallest building in the world",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 54,
+      "loggedMs": 54,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "explain big o notation simply",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 63,
+      "loggedMs": 63,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "what is docker compose used for",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 54,
+      "loggedMs": 54,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "how many people live in india",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 39,
+      "loggedMs": 39,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "what is the difference between tcp and udp",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 45,
+      "loggedMs": 45,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "how to prevent sql injection",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 48,
+      "loggedMs": 47,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "what is mongodb atlas search",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 52,
+      "loggedMs": 52,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "what is a websocket",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 52,
+      "loggedMs": 52,
+      "error": null
+    },
+    {
+      "pass": 2,
+      "query": "who wrote the book the pragmatic programmer",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 45,
+      "loggedMs": 45,
+      "error": null
+    },
+    {
+      "pass": 3,
+      "query": "WHAT IS THE CAPITAL OF AUSTRALIA",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 49,
+      "loggedMs": 48,
+      "error": null
+    },
+    {
+      "pass": 3,
+      "query": "how does  a   vector database work",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 78,
+      "loggedMs": 78,
+      "error": null
+    },
+    {
+      "pass": 3,
+      "query": "  what is retrieval augmented generation  ",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 77,
+      "loggedMs": 77,
+      "error": null
+    },
+    {
+      "pass": 3,
+      "query": "How To Center A Div In CSS",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 55,
+      "loggedMs": 54,
+      "error": null
+    },
+    {
+      "pass": 3,
+      "query": "what is the tallest building in the world ",
+      "expected": "HIT",
+      "status": "HIT",
+      "wallMs": 52,
+      "loggedMs": 52,
+      "error": null
+    },
+    {
+      "pass": 4,
+      "query": "what is a websocket?",
+      "expected": "MISS",
+      "status": "MISS",
+      "wallMs": 413,
+      "loggedMs": 413,
+      "error": null
+    }
+  ]
+}
