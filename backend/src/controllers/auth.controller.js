@@ -1,6 +1,5 @@
 import "dotenv/config";
 import userModel from "../models/user.model.js";
-import { sendEmail } from "../services/mail.services.js";
 import jwt from "jsonwebtoken";
 
 export const registerController = async (req, res, next) => {
@@ -22,115 +21,14 @@ export const registerController = async (req, res, next) => {
     password,
   });
 
-  const emailToken = jwt.sign(
-    {
-      id: user._id,
-      email,
-    },
-    process.env.JWT_SECRET,
-    { expiresIn: "3d" },
-  );
-
-  await sendEmail({
-    to: email,
-    subject: "Welcome to Veritas AI",
-    html: `
-    <h2>Welcome to Veritas AI! 🎉</h2>
-    <p>You're all set to start exploring AI-powered conversations, web research, and more.</p>
-    <p>Please, verify yourself...</p>
-    <a href=https://veritasai-v214.onrender.com/verify-email?token=${emailToken}>Verify Email</a>
-    <br>
-    <p><strong>— The Veritas AI Team</strong></p>
-  `,
-  });
-
   res.status(201).json({
     success: true,
-    message: "User registered successfully, Please verify the given mail.",
+    message: "User registered successfully.",
     user: {
       id: user._id,
       username,
       email,
     },
-  });
-};
-
-export const verifyEmailController = async (req, res, next) => {
-  const { token } = req.query;
-
-  let decoded;
-
-  try {
-    decoded = jwt.verify(token, process.env.JWT_SECRET);
-  } catch (error) {
-    error.message = "Invalid Token";
-    error.status = 403;
-    return next(error);
-  }
-  const { email } = decoded;
-
-  const user = await userModel.findOne({ email });
-
-  if (!user) {
-    const error = new Error("User doesn't exist");
-    error.status = 404;
-    return next(error);
-  }
-
-  if (user.verified) {
-    return res.status(200).json({
-      success: true,
-      message: "Your mail is already verified",
-    });
-  }
-
-  user.verified = true;
-  user.save();
-
-  res.status(200).json({
-    success: true,
-    message: "Email verified successfully",
-  });
-};
-
-export const resendVerifyEmailController = async (req, res, next) => {
-  const { email } = req.body;
-
-  const user = await userModel.findOne({ email });
-
-  if (!user) {
-    const error = new Error("User doesn't exist. Please register");
-    error.status = 401;
-    return next(error);
-  }
-
-  const emailToken = jwt.sign(
-    {
-      email,
-    },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: "3d",
-    },
-  );
-
-  await sendEmail({
-    to: email,
-    subject: "Welcome to Veritas AI",
-    html: `
-    <h2>Welcome to Veritas AI! 🎉</h2>
-    <p>You're all set to start exploring AI-powered conversations, web research, and more.</p>
-    <p>Please, verify yourself...</p>
-    <a href=https://veritasai-v214.onrender.com/verify-email?token=${emailToken}>Verify Email</a>
-    <br>
-    <p><strong>— The Veritas AI Team</strong></p>
-  `,
-  });
-
-  res.status(200).json({
-    success: true,
-    message: "Verification email sent.",
-    email,
   });
 };
 
@@ -143,15 +41,6 @@ export const loginController = async (req, res, next) => {
     const error = new Error("Invalid credentials");
     error.status = 403;
     return next(error);
-  }
-
-  if (!user.verified) {
-    return res.status(403).json({
-      success: false,
-      message: "Please verify your email before logging in.",
-      code: "EMAIL_NOT_VERIFIED",
-      email: user.email,
-    });
   }
 
   const isValidPassword = await user.comparePassword(password);
@@ -193,87 +82,6 @@ export const getMeController = async (req, res, next) => {
     success: true,
     message: "User fetched successfully.",
     user,
-  });
-};
-
-// This sends the password reset email.
-export const forgotPasswordController = async (req, res, next) => {
-  const { email } = req.body;
-
-  try {
-    const user = await userModel.findOne({ email });
-
-    if (!user) {
-      const error = new Error("User doesn't exist");
-      error.status = 403;
-      return next(error);
-    }
-
-    const emailToken = jwt.sign({ email }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
-
-    await sendEmail({
-      to: email,
-      subject: "Reset Password Veritas AI",
-      html: `
-        <h2>Reset Your Password 🔒</h2>
-        <p>We received a request to reset your Veritas AI account password.</p>
-        <p>Click the link below to set a new password.</p>
-        <a href="https://veritasai-v214.onrender.com/reset-password?token=${emailToken}">Reset Password</a>
-      `,
-    });
-
-    res.status(200).json({
-      success: true,
-      message: "Reset password email sent successfully",
-      email,
-    });
-  } catch (error) {
-    console.error("Error sending reset password email:", error);
-    const err = new Error(
-      "Failed to send reset email. Please try again later.",
-    );
-    err.status = 500;
-    return next(err);
-  }
-};
-
-export const resetPasswordController = async (req, res, next) => {
-  const { token } = req.query;
-
-  let decoded;
-
-  try {
-    decoded = jwt.verify(token, process.env.JWT_SECRET);
-  } catch (error) {
-    error.status = 403;
-    return next(error);
-  }
-
-  const { email } = decoded;
-
-  const user = await userModel.findOne({ email });
-
-  if (!user) {
-    const error = new Error("User doesn't exist");
-    error.status = 401;
-    return next(error);
-  }
-
-  const { newPassword } = req.body;
-
-  user.password = newPassword;
-  user.save();
-
-  res.status(201).json({
-    success: true,
-    message: "Password updated successfully.",
-    user: {
-      id: user._id,
-      username: user.username,
-      email: user.email,
-    },
   });
 };
 

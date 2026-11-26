@@ -3,20 +3,17 @@ import { useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth.js";
 import PasswordInput from "../component/PasswordInput.jsx";
-import { toast } from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showResend, setShowResend] = useState(false);
-  const [userEmail, setUserEmail] = useState("");
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
   const error = useSelector((state) => state.auth.error);
 
-  const { handleLogin, handleForgotPassword, handleResendVerifyEmail } = useAuth();
+  const { handleLogin } = useAuth();
 
   if (user) {
     return <Navigate to="/chat" />;
@@ -25,34 +22,12 @@ const Login = () => {
   const submitForm = async (event) => {
     event.preventDefault();
     try {
-      setShowResend(false);
       const payload = { email, password };
 
       await handleLogin(payload);
 
       navigate("/chat");
     } catch (err) {
-      const data = err.response?.data;
-
-      if (data?.code === "EMAIL_NOT_VERIFIED") {
-        setShowResend(true);
-        setUserEmail(data.email);
-      }
-    }
-  };
-
-  const forgotPasswordHandler = () => {
-    handleForgotPassword(email);
-  };
-
-  const handleResend = async () => {
-    const result = await handleResendVerifyEmail(userEmail);
-
-    if (result.success) {
-      toast.success(result.message);
-      setShowResend(false);
-    } else {
-      toast.error(result.message);
     }
   };
 
@@ -109,35 +84,10 @@ const Login = () => {
             autoComplete="current-password"
           />
 
-          <button
-            type="button"
-            onClick={forgotPasswordHandler}
-            className="vauth-link vauth-forgot"
-            style={{ background: "none", border: 0, padding: 0, cursor: "pointer" }}
-          >
-            Forgot password?
-          </button>
-
           {error && (
             <p className="vauth-error" role="alert">
               {error}
             </p>
-          )}
-
-          {showResend && (
-            <div role="status">
-              <p className="vauth-error" style={{ color: "#fbbf24" }}>
-                Your email address has not been verified yet.{" "}
-                <button
-                  type="button"
-                  onClick={handleResend}
-                  className="vauth-link"
-                  style={{ background: "none", border: 0, padding: 0, cursor: "pointer" }}
-                >
-                  Resend verification email
-                </button>
-              </p>
-            </div>
           )}
 
           <button

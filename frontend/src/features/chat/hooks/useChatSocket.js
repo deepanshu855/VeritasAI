@@ -33,8 +33,13 @@ export function useChatSocket() {
   useEffect(() => {
     if (!user) return undefined;
 
-    dispatch(setSocketStatus("connecting"));
-    connectSocket();
+    const sock = connectSocket();
+
+    // If the socket is already connected (e.g. the effect re-ran because
+    // pathname changed while the socket stayed open), set status to
+    // "connected" immediately — the "connect" event will not fire again
+    // for an already-open connection.
+    dispatch(setSocketStatus(sock.connected ? "connected" : "connecting"));
 
     const unsubs = [
       onConnect(() => {
@@ -96,4 +101,3 @@ export function useChatSocket() {
     };
   }, [dispatch]);
 }
-

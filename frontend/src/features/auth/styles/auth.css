@@ -36,14 +36,8 @@
 .vauth-spinner{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:vauth-spin .7s linear infinite}
 .vauth-error{margin:0;font-size:13px;color:#FF8A9B}
 .vauth-switch{margin:20px 0 0;text-align:center;font-size:13px;color:rgba(255,255,255,.6)}
-.vauth-resend{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:8px}
-.vauth-resend-text{margin:0;color:#fbbf24;font-size:13px;text-align:center}
-.vauth-resend-btn{background:transparent;border:1px solid rgba(245,158,11,.35);color:#fbbf24;padding:8px 12px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer}
 .vauth-center{text-align:center}
 .vauth-subtitle{margin:0 0 20px;font-size:14px;color:rgba(255,255,255,.72)}
-.vauth-verify-icon{display:flex;justify-content:center;margin-bottom:16px}
-.vauth-verify-icon--ok{color:#10b981}
-.vauth-verify-icon--err{color:#FF8A9B}
 @keyframes vauth-in{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:none}}
 @keyframes vauth-spin{to{transform:rotate(360deg)}}
 @media (max-width:400px){.vauth-card{padding:28px}}

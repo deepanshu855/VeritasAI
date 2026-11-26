@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useSelector } from "react-redux";
 import PasswordInput from "../component/PasswordInput.jsx";
@@ -8,6 +8,7 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const loading = useSelector((state) => state.auth.loading);
   const user = useSelector((state) => state.auth.user);
@@ -28,7 +29,10 @@ const Register = () => {
       password,
     };
 
-    await handleRegister(payload);
+    const data = await handleRegister(payload);
+    if (data?.success) {
+      navigate("/login");
+    }
   };
 
   return (

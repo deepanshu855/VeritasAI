@@ -29,32 +29,7 @@ export const getMe = async () => {
   return response.data;
 };
 
-export const forgotPassword = async (email) => {
-  console.log("API: ",email)
-  const response = await instance.post("/forgot-password", { email });
-  return response.data;
-};
-
-export const resetPassword = async (newPassword, token) => {
-  const response = await instance.post(`/reset-password?token=${token}`, {
-    newPassword,
-  });
-  return response.data;
-};
-
 export const logout = async () => {
   const response = await instance.get("/logout");
   return response.data;
 };
-
-export const verifyEmail=async (token) => {
-  const response=await instance.get(`/verify-email?token=${token}`);
-  return response.data;
-}
-
-export const resendVerifyEmail=async (email)=>{
-  const response=await instance.post("/resend-email", {
-    email
-  })
-  return response.data
-}

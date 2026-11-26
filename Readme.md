@@ -15,9 +15,6 @@ An AI-powered chat application built with the MERN stack that combines conversat
 - 💬 Persistent chat history
 - 📝 Markdown rendering for AI responses
 - 🔐 JWT Authentication
-- 📧 Email verification
-- 🔄 Resend verification email
-- 🔑 Forgot & Reset Password
 - 🗑️ Delete conversations
 - ⚡ Fast and responsive interface
 - 🍪 Secure authentication using HTTP-only cookies
@@ -45,7 +42,6 @@ An AI-powered chat application built with the MERN stack that combines conversat
 - Mongoose
 - JWT
 - bcrypt
-- Nodemailer
 
 ### AI & Search
 
@@ -61,10 +57,6 @@ An AI-powered chat application built with the MERN stack that combines conversat
 
 - User Registration
 - Secure Login
-- Email Verification
-- Resend Verification Email
-- Forgot Password
-- Reset Password
 - Protected Routes
 
 ### AI Chat
@@ -86,7 +78,6 @@ Veritas AI integrates **Tavily Search API** with **Mistral AI** to provide answe
 - Password hashing with bcrypt
 - JWT Authentication
 - HTTP-only Cookies
-- Email Verification
 - Input Validation
 - Protected API Routes
 
