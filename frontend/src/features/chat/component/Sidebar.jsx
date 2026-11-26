@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Check, LogOut, PanelLeftClose, Plus, Trash2, X } from "lucide-react";
 import BrandLogo from "../../shared/component/BrandLogo";
+import { DEFAULT_AVATAR_URL } from "../../auth/auth.constants";
 
 export default function Sidebar({
   isOpen,
@@ -13,8 +14,15 @@ export default function Sidebar({
   onDeleteChat,
   onLogout,
   userName,
+  userAvatar,
 }) {
   const [confirmId, setConfirmId] = useState(null);
+  const [failedAvatarUrl, setFailedAvatarUrl] = useState(null);
+
+  const avatarSrc =
+    userAvatar && failedAvatarUrl !== userAvatar
+      ? userAvatar
+      : DEFAULT_AVATAR_URL;
 
   return (
     <aside
@@ -111,14 +119,28 @@ export default function Sidebar({
 
       <div className="vchat-sidebar-footer">
         <span className="vchat-user-name">{userName || ""}</span>
-        <button
-          type="button"
-          className="vchat-icon-btn"
-          onClick={onLogout}
-          aria-label="Log out"
-        >
-          <LogOut size={18} aria-hidden="true" />
-        </button>
+        <div className="vchat-footer-actions">
+          <img
+            className="vchat-user-avatar"
+            src={avatarSrc}
+            alt="Profile"
+            referrerPolicy="no-referrer"
+            title={userName || undefined}
+            onError={() => {
+              if (avatarSrc !== DEFAULT_AVATAR_URL) {
+                setFailedAvatarUrl(userAvatar);
+              }
+            }}
+          />
+          <button
+            type="button"
+            className="vchat-icon-btn"
+            onClick={onLogout}
+            aria-label="Log out"
+          >
+            <LogOut size={18} aria-hidden="true" />
+          </button>
+        </div>
       </div>
     </aside>
   );

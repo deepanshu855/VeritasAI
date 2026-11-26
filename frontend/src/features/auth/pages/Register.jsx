@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useSelector } from "react-redux";
 import PasswordInput from "../component/PasswordInput.jsx";
+import GoogleButton from "../component/GoogleButton.jsx";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +15,7 @@ const Register = () => {
   const user = useSelector((state) => state.auth.user);
   const error = useSelector((state) => state.auth.error);
 
-  const { handleRegister } = useAuth();
+  const { handleRegister, handleGoogleLogin } = useAuth();
 
   if (user) {
     return <Navigate to="/chat" />;
@@ -48,6 +49,8 @@ const Register = () => {
 
       <section className="vauth-card">
         <h2 className="vauth-title">Register</h2>
+
+        <GoogleButton onClick={handleGoogleLogin} disabled={loading} />
 
         <form className="vauth-form" onSubmit={submitForm}>
           <div className="vauth-input-wrap">

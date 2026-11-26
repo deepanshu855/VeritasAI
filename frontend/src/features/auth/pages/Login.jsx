@@ -1,19 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth.js";
 import PasswordInput from "../component/PasswordInput.jsx";
+import GoogleButton from "../component/GoogleButton.jsx";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [googleError] = useState(() =>
+    searchParams.get("error") === "google_failed"
+      ? "Google sign-in failed. Please try again."
+      : "",
+  );
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.auth.user);
   const loading = useSelector((state) => state.auth.loading);
   const error = useSelector((state) => state.auth.error);
 
-  const { handleLogin } = useAuth();
+  const { handleLogin, handleGoogleLogin } = useAuth();
+
+  useEffect(() => {
+    if (searchParams.get("error") === "google_failed") {
+      const nextParams = new URLSearchParams(searchParams);
+      nextParams.delete("error");
+      setSearchParams(nextParams, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
 
   if (user) {
     return <Navigate to="/chat" />;
@@ -27,7 +42,8 @@ const Login = () => {
       await handleLogin(payload);
 
       navigate("/chat");
-    } catch (err) {
+    } catch {
+      // Error toast handled in useAuth
     }
   };
 
@@ -44,6 +60,12 @@ const Login = () => {
 
       <section className="vauth-card">
         <h2 className="vauth-title">Log in</h2>
+
+        <GoogleButton
+          onClick={handleGoogleLogin}
+          disabled={loading}
+          error={googleError}
+        />
 
         <form className="vauth-form" onSubmit={submitForm}>
           <div className="vauth-input-wrap">

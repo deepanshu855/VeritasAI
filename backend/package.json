@@ -37,6 +37,8 @@
     "mongoose": "^9.7.4",
     "morgan": "^1.11.0",
     "multer": "^2.5.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
     "pdfjs-dist": "^6.5.438",
     "socket.io": "^4.8.3",
     "tesseract.js": "^7.0.0",

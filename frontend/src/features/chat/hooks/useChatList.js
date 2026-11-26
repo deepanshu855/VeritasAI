@@ -27,6 +27,7 @@ export function useChatList() {
   const activeChatId = useSelector(selectActiveChatId);
   const isLoadingChats = useSelector(selectIsLoadingChats);
   const userName = useSelector((state) => state.auth.user?.username || "");
+  const userAvatar = useSelector((state) => state.auth.user?.avatar || "");
 
   const loadChats = useCallback(async () => {
     dispatch(setLoadingChats(true));
@@ -93,6 +94,7 @@ export function useChatList() {
     activeChatId,
     isLoadingChats,
     userName,
+    userAvatar,
     loadChats,
     selectChat,
     startNewChat,

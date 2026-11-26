@@ -266,6 +266,23 @@ html.vchat-root #root {
   color: rgba(255, 255, 255, 0.88);
 }
 
+.vchat-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.vchat-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  flex: none;
+  display: block;
+}
+
 /* Main column */
 .vchat-main {
   position: relative;

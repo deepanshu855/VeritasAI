@@ -5,6 +5,7 @@ import cors from "cors";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
+import passport from "./config/passport.config.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -25,6 +26,7 @@ app.use(
     credentials: true,
   }),
 );
+app.use(passport.initialize());
 // app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "..", "public")));
 

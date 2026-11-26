@@ -33,3 +33,7 @@ export const logout = async () => {
   const response = await instance.get("/logout");
   return response.data;
 };
+
+export const redirectToGoogleAuth = () => {
+  window.location.assign(`${API_BASE}/api/auth/google`);
+};

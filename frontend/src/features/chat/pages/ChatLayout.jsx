@@ -16,6 +16,7 @@ export default function ChatLayout() {
     conversations,
     activeChatId,
     userName,
+    userAvatar,
     selectChat,
     startNewChat,
     removeChat,
@@ -62,6 +63,7 @@ export default function ChatLayout() {
           conversations={conversations}
           activeChatId={activeChatId}
           userName={userName}
+          userAvatar={userAvatar}
           onCollapse={() => {
             setIsDrawerOpen(false);
             setIsCollapsed(true);

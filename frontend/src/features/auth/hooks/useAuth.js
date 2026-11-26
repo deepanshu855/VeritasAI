@@ -4,6 +4,7 @@ import {
   registerUser,
   getMe,
   logout,
+  redirectToGoogleAuth,
 } from "../services/auth.api";
 import { setUser, setLoading, setError } from "../auth.slice";
 import { toast } from "react-toastify";
@@ -62,7 +63,8 @@ export const useAuth = () => {
       dispatch(setLoading(true));
       const data = await getMe();
       dispatch(setUser(data.user));
-    } catch (error) {
+    } catch {
+      // User is not authenticated
     } finally {
       dispatch(setLoading(false));
     }
@@ -71,7 +73,7 @@ export const useAuth = () => {
   const handleLogout = async () => {
     try {
       dispatch(setLoading(true));
-      const data = await logout();
+      await logout();
       dispatch(setUser(null));
       toast.success("Logout successfully", {
         autoClose: 1000,
@@ -85,10 +87,15 @@ export const useAuth = () => {
     }
   };
 
+  const handleGoogleLogin = () => {
+    redirectToGoogleAuth();
+  };
+
   return {
     handleLogin,
     handleRegister,
     handleGetMe,
     handleLogout,
+    handleGoogleLogin,
   };
 };

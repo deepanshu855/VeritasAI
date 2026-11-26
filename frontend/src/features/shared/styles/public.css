@@ -32,6 +32,14 @@ html.vpub-root,html.vpub-root body,html.vpub-root #root{height:100%;margin:0;ove
   animation:vpub-rise .5s .08s ease-out both}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.vauth-card{background:rgba(12,8,26,.94)}}
 .vauth-title{margin:0 0 28px;text-align:center;font-size:22px;font-weight:600}
+.vauth-google-btn{width:100%;height:50px;box-sizing:border-box;padding:0 16px;border-radius:14px;font:inherit;font-size:15px;font-weight:500;color:#fff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:background-color .15s,border-color .15s}
+.vauth-google-btn:hover:not(:disabled){background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.24)}
+.vauth-google-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.vauth-google-btn:disabled{opacity:.6;cursor:not-allowed}
+.vauth-google-icon{flex:none;display:block}
+.vauth-google-error{margin:10px 0 0;text-align:center}
+.vauth-divider{display:flex;align-items:center;gap:12px;margin:18px 0;font-size:12px;color:var(--v-muted)}
+.vauth-divider::before,.vauth-divider::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.12)}
 .vauth-form{display:flex;flex-direction:column;gap:16px}
 .vauth-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .vauth-input-wrap{position:relative}
@@ -57,4 +65,4 @@ html.vpub-root,html.vpub-root body,html.vpub-root #root{height:100%;margin:0;ove
 @media (max-width:960px){.vauth-page{grid-template-columns:minmax(0,420px);justify-content:center;gap:0}.vauth-aside{display:none}}
 @media (max-width:560px){.vpub-hint{display:none}}
 @media (max-width:400px){.vauth-card{padding:24px}}
-@media (prefers-reduced-motion:reduce){.vland-content,.vauth-aside,.vauth-card,.vauth-spinner{animation:none}.vpub-button,.vauth-input{transition:none}}
+@media (prefers-reduced-motion:reduce){.vland-content,.vauth-aside,.vauth-card,.vauth-spinner{animation:none}.vpub-button,.vauth-input,.vauth-google-btn{transition:none}}
